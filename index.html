@@ -2,391 +2,376 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SwiftPlus — The Partner App by Ind-Swift Laboratories</title>
-<meta name="description" content="SwiftPlus is Ind-Swift's official ordering & rewards app for retailers, chemists and stockists. Order directly, track rewards in real time, get instant order and payment status.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftPlus+ | Smarter Pharma Partnering — Ind-Swift</title>
+<meta name="description" content="SwiftPlus+ is Ind-Swift's official partner app for ordering, invoice uploads, live order status and rewards — built for retailers, chemists and stockists.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --navy:#002C5F;
-    --ink:#17262F;
-    --slate:#4A5257;
-    --sky:#17A8E3;
-    --gold:#F2A93B;
-    --red:#CC1E1E;
-    --paper:#FAFAF8;
-    --paper-dim:#F1EFEA;
-    --line:#E1E4E8;
-    --white:#FFFFFF;
-    --navy-deep:#001B3D;
-    --font-head:'Manrope',Arial,Helvetica,sans-serif;
-    --font-body:'Archivo',Arial,Helvetica,sans-serif;
-    --font-data:'JetBrains Mono',monospace;
-    --font-hi:'Noto Sans Devanagari','Manrope',Arial,sans-serif;
-    --maxw:1180px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--paper);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  html[lang="hi"] body{font-family:var(--font-hi);}
-  html[lang="hi"] h1,html[lang="hi"] h2,html[lang="hi"] h3,html[lang="hi"] h4,
-  html[lang="hi"] .btn,html[lang="hi"] .brand-text,html[lang="hi"] .tagline,
-  html[lang="hi"] .eyebrow,html[lang="hi"] .step-num{font-family:var(--font-hi);}
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
-  ul{list-style:none;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-  h1,h2,h3,h4{font-family:var(--font-head);color:var(--ink);line-height:1.18;letter-spacing:-0.01em;}
-  .eyebrow{
-    font-family:var(--font-data);
-    font-size:12.5px;
-    font-weight:600;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--sky);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-  }
-  html[lang="hi"] .eyebrow{letter-spacing:0;}
-  .eyebrow::before{content:'';width:18px;height:2px;background:var(--gold);display:inline-block;flex:none;}
-  section{position:relative;}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    font-family:var(--font-head);font-weight:700;font-size:15.5px;
-    padding:15px 28px;border-radius:10px;cursor:pointer;border:none;
-    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-    white-space:nowrap;
-  }
-  .btn:active{transform:translateY(1px);}
-  .btn-primary{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 24px -8px rgba(242,169,59,.55);}
-  .btn-primary:hover{box-shadow:0 14px 30px -8px rgba(242,169,59,.7);transform:translateY(-2px);}
-  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.5);}
-  .btn-outline:hover{background:rgba(255,255,255,.08);transform:translateY(-2px);}
-  .btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35);}
-  .btn-ghost:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);}
-  .btn-dark{background:var(--navy);color:var(--white);}
-  .btn-dark:hover{background:var(--navy-deep);transform:translateY(-2px);}
-  .btn-small{padding:11px 18px;font-size:13.5px;}
+:root{
+  --navy:#062B57;
+  --navy2:#0B427F;
+  --blue:#159FE3;
+  --cyan:#54D2E8;
+  --mint:#DDF8F2;
+  --green:#17A673;
+  --gold:#F6B63D;
+  --ink:#102235;
+  --muted:#607080;
+  --bg:#F5F9FC;
+  --white:#fff;
+  --line:#DDE8F0;
+  --shadow:0 24px 70px rgba(6,43,87,.13);
+  --radius:24px;
+  --max:1220px;
+  --font-body:"Manrope",Arial,sans-serif;
+  --font-head:"Plus Jakarta Sans","Manrope",Arial,sans-serif;
+  --font-hi:"Noto Sans Devanagari","Manrope",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.55;
+  overflow-x:hidden;
+}
+html[lang="hi"] body{font-family:var(--font-hi);}
+html[lang="hi"] h1,html[lang="hi"] h2,html[lang="hi"] h3,html[lang="hi"] h4,
+html[lang="hi"] .section-title,html[lang="hi"] .btn,html[lang="hi"] .brand,
+html[lang="hi"] .eyebrow,html[lang="hi"] .kicker{font-family:var(--font-hi);}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(221,232,240,.85)
+}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--navy)}
+.brand-mark{width:38px;height:38px;border-radius:12px;box-shadow:0 8px 20px rgba(21,159,227,.2);flex:none}
+.brand small{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7890A5;font-weight:700}
+.links{display:flex;gap:26px;font-size:13px;font-weight:700;color:#516477}
+.links a:hover{color:var(--blue)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-phone{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:var(--navy);margin-right:2px}
+.nav-phone svg{width:15px;height:15px;color:var(--blue)}
+.lang-toggle{display:flex;background:#F1F6FA;border-radius:999px;padding:3px;border:1px solid var(--line)}
+.lang-btn{border:none;background:transparent;padding:7px 13px;border-radius:999px;font-family:var(--font-head);font-weight:800;font-size:11.5px;color:var(--muted);cursor:pointer;transition:.2s}
+.lang-btn.active{background:var(--navy);color:#fff}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 20px;border-radius:12px;font-size:13px;font-weight:800;
+  transition:.22s ease;border:1px solid transparent;cursor:pointer;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--gold);color:#12304E;box-shadow:0 12px 28px rgba(246,182,61,.28)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-white{background:#fff;color:var(--navy);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.btn-outline{border-color:rgba(255,255,255,.4);color:#fff;background:transparent}
+.btn-outline-dark{border-color:var(--line);color:var(--navy);background:#fff}
+.btn svg{width:16px;height:16px;flex:none}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(250,250,248,.9);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;gap:20px;}
-  .brand{display:flex;align-items:center;gap:10px;}
-  .brand-mark{width:34px;height:34px;flex:none;}
-  .brand-text{font-family:var(--font-head);font-weight:800;font-size:19px;color:var(--navy);letter-spacing:-.01em;}
-  .brand-text span{color:var(--gold);}
-  .brand-sub{font-size:10.5px;color:var(--slate);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-left:2px;}
-  .nav-links{display:flex;align-items:center;gap:28px;}
-  .nav-links a{font-size:14px;font-weight:600;color:var(--ink);opacity:.75;transition:opacity .15s;}
-  .nav-links a:hover{opacity:1;}
-  .nav-right{display:flex;align-items:center;gap:16px;}
-  .nav-phone{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--navy);}
-  .nav-phone svg{width:15px;height:15px;color:var(--sky);}
-  .lang-toggle{display:flex;background:var(--paper-dim);border-radius:20px;padding:3px;border:1px solid var(--line);}
-  .lang-btn{
-    border:none;background:transparent;padding:6px 13px;border-radius:16px;
-    font-family:var(--font-head);font-weight:700;font-size:12.5px;color:var(--slate);cursor:pointer;
-    transition:background .18s, color .18s;
-  }
-  .lang-btn.active{background:var(--navy);color:#fff;}
-  .nav-cta .btn{padding:11px 20px;font-size:14px;}
+/* HERO */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 86% 16%,rgba(84,210,232,.27),transparent 27%),
+    radial-gradient(circle at 10% 92%,rgba(246,182,61,.16),transparent 24%),
+    linear-gradient(135deg,#042550 0%,#073B73 52%,#0A5A93 100%);
+  color:#fff;
+}
+.hero:before{
+  content:"";position:absolute;inset:0;opacity:.12;
+  background-image:linear-gradient(rgba(255,255,255,.25) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(255,255,255,.25) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+.hero-inner{
+  min-height:660px;display:grid;grid-template-columns:1.03fr .97fr;
+  align-items:center;gap:45px;position:relative;z-index:2;padding:64px 0 78px
+}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  color:#BDECF7;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase
+}
+html[lang="hi"] .kicker{letter-spacing:0}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(246,182,61,.13);animation:pulseDot 1.8s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 5px rgba(246,182,61,.13)}50%{box-shadow:0 0 0 9px rgba(246,182,61,.05)}}
+.hero h1{font-family:var(--font-head);font-size:clamp(38px,5vw,66px);line-height:1.06;letter-spacing:-.03em;margin:22px 0}
+.hero h1 span{color:var(--gold)}
+.hero-copy{font-size:16.5px;color:rgba(255,255,255,.78);max-width:600px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 26px}
+.hero-points{display:flex;gap:24px;flex-wrap:wrap}
+.hero-point{padding-left:13px;border-left:2px solid rgba(255,255,255,.25)}
+.hero-point b{display:block;font-size:19px;font-family:var(--font-head)}
+.hero-point small{font-size:11px;color:rgba(255,255,255,.6)}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    background:radial-gradient(1100px 600px at 78% -10%, #0c3e78 0%, var(--navy) 46%, var(--navy-deep) 100%);
-    color:var(--white);
-    padding:72px 0 90px;
-    overflow:hidden;
-    position:relative;
-  }
-  .hero::before{
-    content:'';position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;
-    background:radial-gradient(circle,rgba(23,168,227,.25),transparent 70%);
-  }
-  .hero::after{
-    content:'';position:absolute;left:-120px;bottom:-180px;width:420px;height:420px;border-radius:50%;
-    background:radial-gradient(circle,rgba(242,169,59,.16),transparent 70%);
-  }
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2;}
-  .hero h1{font-size:clamp(28px,5.4vw,45px);font-weight:800;color:var(--white);margin-bottom:20px;}
-  .hero h1 em{font-style:normal;color:var(--gold);}
-  .hero p.lead{font-size:17.5px;line-height:1.65;color:rgba(255,255,255,.82);max-width:490px;margin-bottom:32px;}
-  .hero-actions{margin-bottom:34px;}
-  .store-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
-  .hero-proof{display:flex;gap:26px;flex-wrap:wrap;}
-  .hero-proof div{border-left:2px solid rgba(255,255,255,.2);padding-left:14px;}
-  .hero-proof strong{display:block;font-family:var(--font-head);font-size:21px;color:var(--white);}
-  .hero-proof span{font-size:12px;color:rgba(255,255,255,.6);}
+.hero-visual{height:520px;position:relative}
+.glow{position:absolute;width:420px;height:420px;border-radius:50%;right:10px;top:40px;background:radial-gradient(circle,rgba(84,210,232,.26),transparent 68%)}
+.pharma-orbit{position:absolute;right:5px;top:20px;width:420px;height:420px;border:1px solid rgba(255,255,255,.16);border-radius:50%;animation:spin 46s linear infinite}
+.pharma-orbit:before,.pharma-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%}
+.pharma-orbit:before{inset:45px}.pharma-orbit:after{inset:100px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dna{position:absolute;right:172px;top:66px;width:80px;height:260px;opacity:.42}
+.dna span{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px rgba(84,210,232,.5);animation:dnaPulse 2.6s ease-in-out infinite}
+.dna span:nth-child(1){left:8px;top:0;animation-delay:0s}.dna span:nth-child(2){right:8px;top:34px;animation-delay:.15s}
+.dna span:nth-child(3){left:8px;top:68px;animation-delay:.3s}.dna span:nth-child(4){right:8px;top:102px;animation-delay:.45s}
+.dna span:nth-child(5){left:8px;top:136px;animation-delay:.6s}.dna span:nth-child(6){right:8px;top:170px;animation-delay:.75s}
+.dna span:nth-child(7){left:8px;top:204px;animation-delay:.9s}.dna span:nth-child(8){right:8px;top:238px;animation-delay:1.05s}
+@keyframes dnaPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.dna:before{content:"";position:absolute;left:18px;top:6px;width:44px;height:248px;border-top:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(255,255,255,.35);transform:skewY(23deg)}
 
-  /* Signature visual: ledger -> app transformation */
-  .signature{position:relative;height:480px;max-width:100%;}
-  .ledger-card{
-    position:absolute;left:0;top:26px;width:210px;
-    background:#F4EFE4;color:#3a3226;border-radius:6px;
-    padding:20px 18px;transform:rotate(-7deg);
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
-    font-family:var(--font-data);
-  }
-  .ledger-card .lc-head{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-bottom:14px;border-bottom:1px dashed #b8ac93;padding-bottom:10px;}
-  .ledger-line{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px dashed #d9d0bd;opacity:.85;}
-  .ledger-line.struck{position:relative;opacity:.45;}
-  .ledger-line.struck::after{content:'';position:absolute;left:0;right:0;top:50%;height:1.5px;background:var(--red);}
-  .ledger-stamp{margin-top:14px;font-size:10px;color:var(--red);border:1.5px solid var(--red);display:inline-block;padding:3px 8px;border-radius:3px;transform:rotate(-4deg);opacity:.8;}
+.phone{
+  position:absolute;right:66px;top:14px;width:236px;padding:10px;border-radius:36px;
+  background:#071D38;box-shadow:0 40px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.1);
+  transform:rotate(4deg);z-index:5
+}
+.carousel-viewport{position:relative;border-radius:27px;overflow:hidden;aspect-ratio:9/18;background:#fff}
+.carousel-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .7s ease}
+.carousel-slide.active{opacity:1}
+.carousel-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:3}
+.cdot{width:5px;height:5px;border-radius:50%;background:rgba(6,43,87,.25);transition:.3s;cursor:pointer}
+.cdot.active{background:var(--gold);width:15px;border-radius:3px}
 
-  .flow-arrow{
-    position:absolute;left:195px;top:190px;width:90px;height:2px;
-    background:repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 14px);
-  }
-  .flow-arrow::after{
-    content:'';position:absolute;right:-2px;top:-5px;width:0;height:0;
-    border-left:10px solid var(--gold);border-top:6px solid transparent;border-bottom:6px solid transparent;
-  }
+.phone-tag{
+  position:absolute;left:-108px;bottom:66px;width:178px;padding:15px;border-radius:16px;
+  background:rgba(255,255,255,.96);color:var(--ink);box-shadow:var(--shadow);transform:rotate(-4deg)
+}
+.phone-tag b{display:block;font-size:12px;color:var(--navy)}
+.phone-tag small{font-size:9.5px;color:var(--muted)}
+.floating-card{
+  position:absolute;background:rgba(255,255,255,.96);color:var(--ink);border-radius:17px;
+  padding:14px 16px;box-shadow:var(--shadow);z-index:7
+}
+.floating-card b{display:block;font-size:12px}
+.floating-card small{color:var(--muted);font-size:10px}
+.reward-float{right:0;top:70px}
+.reward-float strong{font-size:23px;color:var(--green);display:block;font-family:var(--font-head)}
+.order-float{left:5px;bottom:60px}
+.status{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:10px;color:var(--green);font-weight:800}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulseGreen 1.6s ease-in-out infinite}
+@keyframes pulseGreen{0%,100%{opacity:1}50%{opacity:.35}}
 
-  .phone{
-    position:absolute;right:6px;top:0;width:220px;
-    background:#0B1E3A;border-radius:34px;padding:14px;
-    box-shadow:0 40px 80px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06);
-  }
-  .carousel-viewport{
-    position:relative;border-radius:22px;overflow:hidden;aspect-ratio:9/17.6;background:#fff;
-  }
-  .carousel-slide{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
-    opacity:0;transition:opacity .7s ease;
-  }
-  .carousel-slide.active{opacity:1;}
-  .carousel-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:3;}
-  .cdot{width:6px;height:6px;border-radius:50%;background:rgba(0,44,95,.25);transition:all .3s;cursor:pointer;}
-  .cdot.active{background:var(--gold);width:18px;border-radius:3px;}
+/* TRUST STRIP */
+.trust-strip{background:#fff;border-bottom:1px solid var(--line)}
+.trust-row{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap;padding:14px 0}
+.trust-copy{font-size:11.5px;color:#74879A;font-weight:800;letter-spacing:.02em}
+.trust-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#F8FBFD;font-size:11px;font-weight:800;color:var(--navy)}
 
-  @media (max-width:980px){
-    .hero-grid{grid-template-columns:1fr;gap:52px;}
-    .signature{
-      height:auto;max-width:280px;margin:0 auto;
-      display:flex;flex-direction:column;align-items:center;gap:26px;
-    }
-    .ledger-card{position:relative;left:auto;top:auto;width:200px;}
-    .phone{position:relative;right:auto;top:auto;width:210px;}
-    .flow-arrow{
-      position:relative;left:auto;top:auto;width:2px;height:34px;
-      background:repeating-linear-gradient(180deg, var(--gold) 0 8px, transparent 8px 14px);
-    }
-    .flow-arrow::after{
-      right:auto;top:auto;bottom:-3px;left:50%;transform:translateX(-50%);
-      border-left:6px solid transparent;border-right:6px solid transparent;
-      border-top:9px solid var(--gold);border-bottom:none;
-    }
-  }
+/* SECTIONS */
+section{padding:96px 0}
+.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);font-weight:900}
+html[lang="hi"] .eyebrow{letter-spacing:0}
+.section-title{font-family:var(--font-head);font-size:clamp(28px,3.8vw,44px);line-height:1.1;letter-spacing:-.025em;margin:12px 0 15px;color:var(--navy)}
+.section-lead{max-width:670px;color:var(--muted);font-size:15px}
+.head{margin-bottom:46px}
+.center{text-align:center}.center .section-lead{margin:auto}
 
-  /* ---------- SECTION shells ---------- */
-  .section{padding:96px 0;}
-  .section-tight{padding:72px 0;}
-  .section-head{max-width:640px;margin-bottom:52px;}
-  .section-head h2{font-size:clamp(24px,3.6vw,33px);font-weight:800;margin:14px 0 14px;}
-  .section-head p{font-size:16px;color:var(--slate);line-height:1.65;}
-  .bg-dim{background:var(--paper-dim);}
+/* Animated icon chip -- shared */
+.icon{
+  width:48px;height:48px;border-radius:15px;background:#E9F7FC;color:var(--blue);
+  display:grid;place-items:center;margin-bottom:20px;
+  animation:iconFloat 3.6s ease-in-out infinite;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.icon svg{width:22px;height:22px}
+@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.problem-card:hover .icon,.feature:hover .icon,.solution-item:hover .icon{
+  animation-play-state:paused;transform:scale(1.14) rotate(-7deg);
+}
 
-  /* ---------- PROBLEM CARDS ---------- */
-  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  .problem-card{
-    background:var(--white);border:1px solid var(--line);border-radius:14px;
-    padding:30px 26px;position:relative;overflow:hidden;
-  }
-  .problem-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);}
-  .problem-card .pc-icon{width:40px;height:40px;margin-bottom:18px;color:var(--red);}
-  .problem-card h4{font-size:17px;margin-bottom:8px;}
-  .problem-card p{font-size:14.5px;color:var(--slate);line-height:1.55;}
+/* PROBLEM */
+.problem{background:#fff}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.problem-card{position:relative;overflow:hidden;padding:30px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#fff,#F8FBFD)}
+.problem-card:after{content:"";position:absolute;right:-30px;top:-35px;width:110px;height:110px;border-radius:50%;background:#EDF8FC}
+.problem-card h3{font-family:var(--font-head);font-size:18px;margin-bottom:9px;position:relative}
+.problem-card p{font-size:13px;color:var(--muted);position:relative}
 
-  /* ---------- COMPARISON ---------- */
-  .compare{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;}
-  .compare-col{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px 28px;}
-  .compare-col.old{border-color:#f0d9d9;}
-  .compare-col.new{border-color:#cdeaf7;background:linear-gradient(180deg,#fff,#f5fbfe);}
-  .compare-label{
-    font-family:var(--font-head);font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
-    padding:6px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;
-  }
-  html[lang="hi"] .compare-label{font-family:var(--font-hi);letter-spacing:0;}
-  .compare-label.old{background:#FDECEC;color:var(--red);}
-  .compare-label.new{background:#E6F6FD;color:var(--sky);}
-  .compare-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px;}
-  .compare-item:last-child{border-bottom:none;}
-  .compare-item svg{flex:none;margin-top:2px;width:18px;height:18px;}
-  .compare-mid{display:flex;align-items:center;justify-content:center;padding:0 22px;}
-  .compare-mid svg{width:34px;height:34px;color:var(--gold);}
-  @media (max-width:900px){
-    .compare{grid-template-columns:1fr;gap:18px;}
-    .compare-mid{transform:rotate(90deg);padding:6px 0;}
-  }
+/* SOLUTION */
+.solution{background:linear-gradient(180deg,#F5F9FC 0%,#EDF7FB 100%)}
+.solution-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.solution-image{
+  min-height:460px;border-radius:30px;overflow:hidden;position:relative;
+  box-shadow:var(--shadow);background:#071D38;
+}
+.solution-image .carousel-viewport{position:absolute;inset:0;border-radius:0;aspect-ratio:auto}
+.solution-image .carousel-slide{object-position:top center}
+.solution-image:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,43,87,.15) 0%,rgba(3,25,48,.88) 100%);z-index:2}
+.image-label{position:absolute;left:25px;bottom:24px;right:25px;color:#fff;z-index:3}
+.image-label b{display:block;font-family:var(--font-head);font-size:22px}
+.image-label span{font-size:12px;color:rgba(255,255,255,.72)}
+.solution-list{display:grid;gap:16px;margin-top:30px}
+.solution-item{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:18px;border-radius:17px;background:#fff;border:1px solid var(--line);transition:.25s}
+.solution-item:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.solution-item .icon{margin:0;width:44px;height:44px}
+.solution-item h3{font-size:15px;margin-bottom:4px;font-family:var(--font-head)}.solution-item p{font-size:12.5px;color:var(--muted)}
 
-  /* ---------- FEATURES ---------- */
-  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .feature-card{
-    background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .feature-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(0,44,95,.18);}
-  .feature-icon{
-    width:46px;height:46px;border-radius:12px;background:var(--navy);color:var(--gold);
-    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
-  }
-  .feature-icon svg{width:24px;height:24px;}
-  .feature-card h4{font-size:17px;margin-bottom:8px;}
-  .feature-card p{font-size:14.5px;color:var(--slate);line-height:1.55;}
+/* FEATURES */
+.features{background:#fff}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{
+  min-height:200px;padding:26px;border-radius:20px;border:1px solid var(--line);
+  background:#fff;transition:.25s;position:relative;overflow:hidden
+}
+.feature:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.feature:before{content:"";position:absolute;right:-50px;top:-50px;width:130px;height:130px;border-radius:50%;background:#F0FAFD}
+.feature .icon{position:relative;z-index:2}
+.feature h3{font-family:var(--font-head);font-size:16.5px;margin-bottom:8px;position:relative}
+.feature p{font-size:12.5px;color:var(--muted);max-width:330px;position:relative}
 
-  /* ---------- HOW IT WORKS ---------- */
-  .steps{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
-  .step{position:relative;padding-top:8px;}
-  .step-num{
-    font-family:var(--font-data);font-weight:700;font-size:13px;color:var(--gold);
-    background:var(--navy);width:34px;height:34px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
-  }
-  .step h4{font-size:15px;margin-bottom:6px;}
-  .step p{font-size:13px;color:var(--slate);line-height:1.5;}
-  .step-line{position:absolute;top:17px;left:38px;right:-16px;height:2px;background:var(--line);}
-  .step:last-child .step-line{display:none;}
-  @media (max-width:980px){
-    .steps{grid-template-columns:repeat(2,1fr);}
-    .step-line{display:none;}
-  }
-  @media (max-width:640px){
-    .steps{grid-template-columns:1fr;}
-  }
-  @media (min-width:641px) and (max-width:980px){
-    .problem-grid,.feature-grid{grid-template-columns:repeat(2,1fr);}
-    .reward-grid{grid-template-columns:repeat(2,1fr);}
-  }
+/* HOW */
+.how{background:var(--navy);color:#fff}
+.how .section-title{color:#fff}.how .section-lead{color:rgba(255,255,255,.65)}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:46px}
+.step{position:relative;padding:22px 16px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.055);border-radius:18px;transition:.25s}
+.step:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+.step-num{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--navy);font-weight:900;font-size:12px;margin-bottom:16px;font-family:var(--font-head);animation:iconFloat 3.6s ease-in-out infinite}
+.step h3{font-size:14px;margin-bottom:7px;font-family:var(--font-head)}.step p{font-size:11px;color:rgba(255,255,255,.58)}
+.step:not(:last-child):after{content:"";position:absolute;right:-16px;top:39px;width:18px;height:1px;background:rgba(255,255,255,.22)}
 
-  /* ---------- REWARDS ---------- */
-  .rewards-band{
-    background:linear-gradient(120deg,var(--navy) 0%, var(--navy-deep) 100%);
-    border-radius:24px;padding:56px 48px;color:#fff;position:relative;overflow:hidden;
-  }
-  .rewards-band::before{content:'';position:absolute;right:-100px;bottom:-140px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(242,169,59,.22),transparent 70%);}
-  .tagline{
-    font-family:var(--font-head);font-weight:800;font-size:clamp(20px,3.6vw,27px);color:var(--gold);margin-bottom:10px;
-  }
-  .rewards-band > p{color:rgba(255,255,255,.78);font-size:15.5px;max-width:520px;margin-bottom:36px;}
-  .reward-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:2;}
-  .reward-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px 18px;}
-  .reward-item svg{width:26px;height:26px;color:var(--gold);margin-bottom:14px;}
-  .reward-item p{font-size:14px;color:rgba(255,255,255,.9);line-height:1.5;}
-  @media (max-width:980px){.reward-grid{grid-template-columns:repeat(2,1fr);} .rewards-band{padding:40px 26px;}}
+/* REWARDS */
+.rewards{background:#fff}
+.reward-layout{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.reward-visual{
+  min-height:420px;border-radius:30px;overflow:hidden;position:relative;
+  box-shadow:var(--shadow);background:linear-gradient(145deg,#052a53,#0B6DA0);
+}
+.reward-visual .carousel-viewport{position:absolute;inset:0;border-radius:0;aspect-ratio:auto;opacity:.5}
+.reward-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(4,37,80,.4),rgba(6,104,144,.72));z-index:2}
+.reward-badge{
+  position:absolute;left:28px;top:28px;background:rgba(255,255,255,.96);padding:14px 16px;border-radius:15px;
+  box-shadow:var(--shadow);color:var(--navy);z-index:3
+}
+.reward-badge strong{font-size:27px;display:block;color:var(--green);font-family:var(--font-head)}
+.reward-badge small{font-size:10px;font-weight:800}
+.reward-content .section-title{max-width:520px}
+.reward-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.reward-point{padding:18px;border:1px solid var(--line);border-radius:16px;background:#F8FBFD;transition:.25s}
+.reward-point:hover{border-color:var(--blue);transform:translateY(-2px)}
+.reward-point b{display:block;font-size:13px;font-family:var(--font-head)}.reward-point span{font-size:11px;color:var(--muted)}
 
-  /* ---------- TRUST ---------- */
-  .trust{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}
-  .trust-copy h2{font-size:clamp(23px,3.4vw,31px);font-weight:800;margin:14px 0;}
-  .trust-copy p{color:var(--slate);font-size:15.5px;line-height:1.7;}
-  .trust-stats{display:flex;gap:30px;margin-top:28px;flex-wrap:wrap;}
-  .trust-stats div strong{display:block;font-family:var(--font-head);font-size:29px;color:var(--navy);}
-  .trust-stats div span{font-size:12px;color:var(--slate);}
-  .trust-panel{
-    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:8px;
-  }
-  .trust-row{display:flex;align-items:center;gap:14px;padding:15px 14px;border-bottom:1px solid var(--line);}
-  .trust-row:last-child{border-bottom:none;}
-  .trust-row svg{width:22px;height:22px;color:var(--sky);flex:none;}
-  .trust-row span{font-size:13.5px;color:var(--ink);font-weight:500;}
-  @media (max-width:900px){.trust{grid-template-columns:1fr;}}
+/* TRUST */
+.trust{background:#F1F7FA}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.trust-photo{
+  min-height:380px;border-radius:30px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 55%,var(--blue) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.trust-seal{width:180px;height:180px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;position:relative;animation:spin 60s linear infinite}
+.trust-seal:before{content:"";position:absolute;inset:22px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.trust-seal-inner{width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;animation:spin 60s linear infinite reverse}
+.trust-seal-inner strong{font-family:var(--font-head);font-size:26px}
+.trust-seal-inner span{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.stats{display:flex;gap:30px;margin:26px 0;flex-wrap:wrap}
+.stat b{font-family:var(--font-head);font-size:27px;color:var(--navy);display:block}.stat span{font-size:10px;color:var(--muted);font-weight:700}
+.trust-list{display:grid;gap:11px}
+.trust-list div{padding:14px 16px;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;color:#3D5366;display:flex;align-items:center;gap:9px}
+.trust-list svg{width:15px;height:15px;color:var(--green);flex:none}
 
-  /* ---------- FINAL CTA ---------- */
-  .final-cta{
-    background:var(--ink);color:#fff;border-radius:24px;padding:64px 48px;text-align:center;
-    background-image:radial-gradient(700px 300px at 50% 0%, rgba(23,168,227,.18), transparent 70%);
-  }
-  .final-cta h2{color:#fff;font-size:clamp(23px,3.6vw,31px);margin-bottom:14px;}
-  .final-cta p{color:rgba(255,255,255,.72);font-size:15.5px;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;}
-  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .fine{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.45);}
-  @media (max-width:640px){
-    .final-cta{padding:44px 22px;border-radius:18px;}
-    .rewards-band{padding:34px 22px !important;border-radius:18px;}
-    .reward-grid{grid-template-columns:1fr !important;}
-    .btn{padding:13px 22px;font-size:14.5px;}
-    .store-row .btn{width:100%;}
-    .cta-row .btn{width:100%;}
-  }
+/* CTA */
+.cta{padding:64px 0}
+.cta-box{
+  position:relative;overflow:hidden;border-radius:30px;padding:60px 40px;text-align:center;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(84,210,232,.25),transparent 36%),
+    linear-gradient(135deg,#052650,#0A5D91);color:#fff
+}
+.cta-box:after{content:"";position:absolute;right:-80px;bottom:-110px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+.cta-box .section-title{color:#fff;max-width:720px;margin:10px auto 14px}
+.cta-box p{max-width:570px;margin:auto;color:rgba(255,255,255,.7);font-size:14px}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:56px 0 28px;}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px;}
-  .foot-brand .brand-text{color:#fff;}
-  .foot-brand p{font-size:13.5px;line-height:1.7;margin-top:14px;color:rgba(255,255,255,.55);max-width:340px;}
-  footer h5{font-family:var(--font-head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:16px;}
-  html[lang="hi"] footer h5{font-family:var(--font-hi);letter-spacing:0;}
-  footer li{font-size:13.5px;margin-bottom:10px;color:rgba(255,255,255,.6);}
-  footer a:hover{color:#fff;}
-  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.4);}
-  @media (max-width:800px){.foot-grid{grid-template-columns:1fr;}}
+/* FOOTER */
+footer{background:#031D38;color:#AFC2D4;padding:52px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;padding-bottom:32px}
+footer .brand{color:#fff}
+footer .brand small{color:#7892AA}
+footer p,footer li{font-size:11.5px;line-height:1.7}
+footer h4{color:#fff;font-size:12px;margin-bottom:13px;font-family:var(--font-head)}
+html[lang="hi"] footer h4{font-family:var(--font-hi)}
+footer ul{list-style:none}
+footer li{margin-bottom:7px}
+footer a:hover{color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:10px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
-  /* reveal animation */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
 
-  @media (max-width:980px){
-    .nav-links{display:none;}
-    .nav-phone{display:none;}
-    .hero h1{font-size:33px;}
-    .problem-grid,.feature-grid{grid-template-columns:1fr;}
-    .trust-stats{gap:20px;}
-  }
-  @media (max-width:640px){
-    .nav{padding:12px 16px;}
-    .wrap{padding:0 18px;}
-    .nav-right{gap:8px;}
-    .brand-sub{display:none;}
-    .brand-text{font-size:17px;}
-    .brand-mark{width:28px;height:28px;}
-    .lang-btn{padding:5px 9px;font-size:11.5px;}
-    .nav-cta .btn{padding:9px 13px;font-size:12.5px;}
-  }
-  @media (max-width:360px){
-    .brand-text{font-size:15.5px;}
-    .nav-cta .btn{padding:8px 11px;font-size:11.5px;}
-    .lang-btn{padding:4px 8px;font-size:11px;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .reveal{opacity:1;transform:none;transition:none;}
-    .carousel-slide{transition:none;}
-  }
+/* RESPONSIVE */
+@media(max-width:1050px){
+  .links{display:none}
+  .hero-inner,.solution-layout,.reward-layout,.trust-grid{grid-template-columns:1fr}
+  .hero-inner{padding-top:50px}
+  .hero-visual{max-width:520px;width:100%;margin:auto}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .step:nth-child(3):after,.step:nth-child(6):after{display:none}
+  .solution-image{min-height:340px}
+}
+@media(max-width:720px){
+  .container{width:min(100% - 28px,var(--max))}
+  .nav{height:66px}.nav-cta .btn{display:none}
+  .nav-phone{display:none}
+  .hero h1{font-size:40px}
+  .hero-inner{min-height:auto;padding:48px 0}
+  .hero-visual{height:440px;transform:scale(.86);transform-origin:center top;margin-bottom:-60px}
+  .phone{right:78px}.reward-float{right:-4px}.order-float{left:-5px}
+  .trust-row{padding:16px 0}
+  section{padding:68px 0}
+  .problem-grid,.feature-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:not(:last-child):after{display:none}
+  .reward-points{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .stats{gap:18px}
+  .cta-actions .btn{width:100%}
+}
+@media(max-width:460px){
+  .hero h1{font-size:34px}
+  .hero-copy{font-size:14.5px}
+  .hero-visual{transform:scale(.72);height:390px;margin-bottom:-90px}
+  .phone{right:80px}
+  .steps{grid-template-columns:1fr}
+  .cta-box{padding:44px 20px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .icon,.step-num,.kicker i,.status i,.pharma-orbit,.trust-seal,.trust-seal-inner,.carousel-slide,.dna span{animation:none !important}
+}
 </style>
 </head>
-<body>
 
+<body>
 <header>
-  <div class="nav">
-    <a class="brand" href="#top">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="19" fill="#002C5F"/>
-        <path d="M9 22 C14 14, 22 12, 31 15 C25 16, 20 19, 17 25 C14 22, 11 21, 9 22Z" fill="#F2A93B"/>
-        <path d="M14 27 C19 20, 27 18, 34 21" stroke="#17A8E3" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="SwiftPlus home">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="12" fill="#062B57"/>
+        <path d="M9 22C14 14 22 12 31 15C25 16 20 19 17 25C14 22 11 21 9 22Z" fill="#F6B63D"/>
+        <path d="M14 27C19 20 27 18 34 21" stroke="#54D2E8" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="brand-text">SwiftPlus<span>+</span></span>
-      <span class="brand-sub" data-i18n="brand_sub">by Ind-Swift</span>
+      <span>SwiftPlus+ <small data-i18n="brand_sub">by Ind-Swift</small></span>
     </a>
-    <nav class="nav-links">
+    <nav class="links">
       <a href="#why" data-i18n="nav_why">Why SwiftPlus</a>
       <a href="#features" data-i18n="nav_features">Features</a>
-      <a href="#how" data-i18n="nav_how">How it Works</a>
+      <a href="#how" data-i18n="nav_how">How It Works</a>
       <a href="#rewards" data-i18n="nav_rewards">Rewards</a>
     </nav>
-    <div class="nav-right">
+    <div class="nav-cta">
       <a class="nav-phone" href="tel:+919056629609">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg>
         <span>+91 90566 29609</span>
@@ -395,287 +380,318 @@
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="hi">हिं</button>
       </div>
-      <div class="nav-cta">
-        <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener" data-i18n="nav_cta">Get the App</a>
-      </div>
+      <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener" data-i18n="nav_cta">Get the App</a>
     </div>
   </div>
 </header>
 
 <main id="top">
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="kicker"><i></i> <span data-i18n="hero_kicker">SwiftPlus Partner App</span></div>
+      <h1 data-i18n="hero_h1">Smarter pharma trade.<br><span>Every order counts.</span></h1>
+      <p class="hero-copy" data-i18n="hero_copy">A modern digital partner experience for Ind-Swift retailers, chemists and stockists. Order faster, track payments, upload invoices and turn eligible purchases into visible rewards.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3.5v17a1 1 0 0 0 1.6.8l11-8.5a1 1 0 0 0 0-1.6L4.6 2.7A1 1 0 0 0 3 3.5z"/></svg>
+          <span data-i18n="btn_play">Google Play</span>
+        </a>
+        <a class="btn btn-outline" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener">
+          <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.6 59 129.3 107.2 127.8 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84.1 102.6-121.8-65.2-30.7-65.7-90-65.7-91.99zM256.4 88.9c26.6-31.6 24.2-60.4 23.4-70.9-23.6 1.4-50.9 16.4-66.5 34.8-17.2 19.5-27.3 43.6-25.2 70.4 25.7 2 49.1-10.9 68.3-34.3z"/></svg>
+          <span data-i18n="btn_appstore_short">App Store</span>
+        </a>
+        <a class="btn btn-white" href="#how" data-i18n="btn_how">See How It Works</a>
+      </div>
+      <div class="hero-points">
+        <div class="hero-point"><b>1-Tap</b><small data-i18n="proof1">Order placement</small></div>
+        <div class="hero-point"><b data-i18n="proof2_num">Live</b><small data-i18n="proof2">Order &amp; payment status</small></div>
+        <div class="hero-point"><b>100%</b><small data-i18n="proof3">Reward visibility</small></div>
+      </div>
+    </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow" data-i18n="hero_eyebrow">SwiftPlus Partner App</div>
-        <h1 data-i18n="hero_h1">Now Every Order<br><em>Shows a Reward.</em></h1>
-        <p class="lead" data-i18n="hero_lead">One tap to order. Real-time status on every order and payment. A direct line to Ind-Swift — no more phone calls, no more waiting to find out where your order stands.</p>
-        <div class="hero-actions">
-          <div class="store-row">
-            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3.5v17a1 1 0 0 0 1.6.8l11-8.5a1 1 0 0 0 0-1.6L4.6 2.7A1 1 0 0 0 3 3.5z"/></svg>
-              <span data-i18n="btn_play">Google Play</span>
-            </a>
-            <a class="btn btn-outline" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener">
-              <svg width="17" height="17" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.6 59 129.3 107.2 127.8 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84.1 102.6-121.8-65.2-30.7-65.7-90-65.7-91.99zM256.4 88.9c26.6-31.6 24.2-60.4 23.4-70.9-23.6 1.4-50.9 16.4-66.5 34.8-17.2 19.5-27.3 43.6-25.2 70.4 25.7 2 49.1-10.9 68.3-34.3z"/></svg>
-              <span>App Store</span>
-            </a>
+    <div class="hero-visual">
+      <div class="glow"></div>
+      <div class="pharma-orbit"></div>
+      <div class="dna">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="floating-card reward-float reveal">
+        <small data-i18n="reward_wallet_label">REWARD WALLET</small>
+        <strong><span id="heroPoints">0</span> pts</strong>
+        <div class="status"><i></i> <span data-i18n="updated_live">Updated live</span></div>
+      </div>
+
+      <div class="phone">
+        <div class="carousel-viewport" id="carousel">
+          <img class="carousel-slide active" src="https://play-lh.googleusercontent.com/f68dqfeKtCvPhSysLpUncbRUn5twtNtRSM2VZfegytDI83mGWc0lAbjQtfj0c3f6wfagxXuaqI_vwaEdhk6L2w=w420" alt="SwiftPlus app screenshot 1">
+          <img class="carousel-slide" src="https://play-lh.googleusercontent.com/BFoeKmSKKT4zUGiyykpMaxoCz3p4qg0N1YcIsSgqS3reY402z9kL3gCSB_QhtX8os32YkoBL7S1xM__Q_J_4=w420" alt="SwiftPlus app screenshot 2">
+          <img class="carousel-slide" src="https://play-lh.googleusercontent.com/s4KFJ-h2B2vUnb7WSMeyHjuiMO1mPpLRxgBtqNkdmEbWT_E1-PL-kyE03AzxmQJCPxFNuvtMSx-lEHgAviMMHw=w420" alt="SwiftPlus app screenshot 3">
+          <img class="carousel-slide" src="https://play-lh.googleusercontent.com/s9IZlGkxNpCVp6IpnuGVxsoW7n3SBGcZUn9d4zJVFansVIcvIZ6pZkrkcmAtn-4-bai3oLPBuOcaF3qh6IkdRA=w420" alt="SwiftPlus app screenshot 4">
+          <div class="carousel-dots">
+            <span class="cdot active" data-i="0"></span><span class="cdot" data-i="1"></span><span class="cdot" data-i="2"></span><span class="cdot" data-i="3"></span>
           </div>
-          <a class="btn btn-ghost" href="#how" data-i18n="btn_how">See How It Works</a>
-        </div>
-        <div class="hero-proof">
-          <div><strong>1-Tap</strong><span data-i18n="proof1">Order Placement</span></div>
-          <div><strong data-i18n="proof2_num">Live</strong><span data-i18n="proof2">Order &amp; Payment Status</span></div>
-          <div><strong>100%</strong><span data-i18n="proof3">Transparent Rewards</span></div>
         </div>
       </div>
 
-      <div class="signature reveal">
-        <div class="ledger-card">
-          <div class="lc-head" data-i18n="ledger_head">Order Register — Old Way</div>
-          <div class="ledger-line struck"><span data-i18n="ledger1a">Order #114</span><span data-i18n="ledger1b">Called 3x</span></div>
-          <div class="ledger-line struck"><span data-i18n="ledger2a">Scheme Offer</span><span data-i18n="ledger2b">Missed</span></div>
-          <div class="ledger-line struck"><span data-i18n="ledger3a">Confirmation</span><span data-i18n="ledger3b">Pending...</span></div>
-          <div class="ledger-line struck"><span data-i18n="ledger4a">Reward Points</span><span data-i18n="ledger4b">Unknown</span></div>
-          <div class="ledger-stamp" data-i18n="ledger_stamp">DELAYED</div>
+      <div class="floating-card order-float reveal">
+        <small data-i18n="order_label">ORDER #114</small>
+        <b data-i18n="dispatch_confirmed">Dispatch confirmed</b>
+        <div class="status"><i></i> <span data-i18n="ready_to_ship">Ready to ship</span></div>
+      </div>
+
+      <div class="phone-tag reveal">
+        <b data-i18n="phone_tag_b">One connected partner journey</b>
+        <small data-i18n="phone_tag_small">Order → Invoice → Status → Points → Reward</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="container trust-row">
+    <div class="trust-copy" data-i18n="trust_strip">BUILT FOR IND-SWIFT'S REGISTERED TRADE PARTNER NETWORK</div>
+    <div class="trust-chips">
+      <span class="chip" data-i18n="chip1">Retailers</span><span class="chip" data-i18n="chip2">Chemists</span><span class="chip" data-i18n="chip3">Stockists</span><span class="chip" data-i18n="chip4">Pharma Trade</span>
+    </div>
+  </div>
+</div>
+
+<section class="problem" id="why">
+  <div class="container">
+    <div class="head reveal">
+      <div class="eyebrow" data-i18n="why_eyebrow">The old pharma trade experience</div>
+      <h2 class="section-title" data-i18n="why_h2">Less chasing.<br>More control.</h2>
+      <p class="section-lead" data-i18n="why_p">SwiftPlus closes the everyday gaps between placing an order, knowing its status and understanding what you have earned.</p>
+    </div>
+    <div class="problem-grid">
+      <article class="problem-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg></div>
+        <h3 data-i18n="p1_h">Manual, repetitive ordering</h3>
+        <p data-i18n="p1_p">Repeated calls, product names, quantities and confirmation follow-ups slow down a busy pharmacy.</p>
+      </article>
+      <article class="problem-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M4.5 8.5a4 4 0 0 1 4-4h7a4 4 0 0 1 0 8h-7a4 4 0 0 0 0 8h7a4 4 0 0 0 4-4"/></svg></div>
+        <h3 data-i18n="p2_h">Schemes can get missed</h3>
+        <p data-i18n="p2_p">Reward slabs and seasonal offers are difficult to follow when there is no single digital place to track them.</p>
+      </article>
+      <article class="problem-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3 data-i18n="p3_h">Status is often unclear</h3>
+        <p data-i18n="p3_p">Know whether an order is confirmed, dispatched or whether payment has been recorded without another call.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="solution">
+  <div class="container solution-layout">
+    <div class="solution-image reveal">
+      <div class="carousel-viewport" id="carousel2">
+        <img class="carousel-slide active" src="https://play-lh.googleusercontent.com/s4KFJ-h2B2vUnb7WSMeyHjuiMO1mPpLRxgBtqNkdmEbWT_E1-PL-kyE03AzxmQJCPxFNuvtMSx-lEHgAviMMHw=w800" alt="SwiftPlus app in use">
+        <img class="carousel-slide" src="https://play-lh.googleusercontent.com/s9IZlGkxNpCVp6IpnuGVxsoW7n3SBGcZUn9d4zJVFansVIcvIZ6pZkrkcmAtn-4-bai3oLPBuOcaF3qh6IkdRA=w800" alt="SwiftPlus app screen">
+      </div>
+      <div class="image-label">
+        <b data-i18n="sol_img_b">Digital pharma partnering, redesigned.</b>
+        <span data-i18n="sol_img_span">A cleaner connection between Ind-Swift and the trade partner.</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="sol_eyebrow">The SwiftPlus difference</div>
+      <h2 class="section-title" data-i18n="sol_h2">One app.<br>One source of truth.</h2>
+      <p class="section-lead" data-i18n="sol_p">From the first tap to the final reward, the journey becomes visible, trackable and easier to manage.</p>
+      <div class="solution-list">
+        <div class="solution-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12l5 5L20 6"/></svg></div>
+          <div><h3 data-i18n="sol1_h">Order directly</h3><p data-i18n="sol1_p">Place orders straight to Ind-Swift or continue through your regular sales representative.</p></div>
         </div>
-        <div class="flow-arrow"></div>
-        <div class="phone">
-          <div class="carousel-viewport" id="carousel">
-            <img class="carousel-slide active" src="https://play-lh.googleusercontent.com/f68dqfeKtCvPhSysLpUncbRUn5twtNtRSM2VZfegytDI83mGWc0lAbjQtfj0c3f6wfagxXuaqI_vwaEdhk6L2w=w420" alt="SwiftPlus app screenshot 1">
-            <img class="carousel-slide" src="https://play-lh.googleusercontent.com/BFoeKmSKKT4zUGiyykpMaxoCz3p4qg0N1YcIsSgqS3reY402z9kL3gCSB_QhtX8os32YkoBL7S1xM__Q_J_4=w420" alt="SwiftPlus app screenshot 2">
-            <img class="carousel-slide" src="https://play-lh.googleusercontent.com/s4KFJ-h2B2vUnb7WSMeyHjuiMO1mPpLRxgBtqNkdmEbWT_E1-PL-kyE03AzxmQJCPxFNuvtMSx-lEHgAviMMHw=w420" alt="SwiftPlus app screenshot 3">
-            <div class="carousel-dots">
-              <span class="cdot active" data-i="0"></span><span class="cdot" data-i="1"></span><span class="cdot" data-i="2"></span>
-            </div>
-          </div>
+        <div class="solution-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+          <div><h3 data-i18n="sol2_h">Upload invoices</h3><p data-i18n="sol2_p">Capture eligible purchase invoices from your phone and keep the process digital.</p></div>
+        </div>
+        <div class="solution-item">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <div><h3 data-i18n="sol3_h">Track live status</h3><p data-i18n="sol3_p">See order and payment progress as the status changes.</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY IT MATTERS -->
-  <section class="section" id="why">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow" data-i18n="why_eyebrow">The Problem</div>
-        <h2 data-i18n="why_h2">Running your pharmacy shouldn't mean chasing your own orders.</h2>
-        <p data-i18n="why_p">Most retailers and stockists still order the way pharma trade has for decades — over the phone, through a field rep, with no real way to check status until the delivery van shows up. SwiftPlus was built to close that gap.</p>
+<section class="features" id="features">
+  <div class="container">
+    <div class="head center reveal">
+      <div class="eyebrow" data-i18n="feat_eyebrow">What you get</div>
+      <h2 class="section-title" data-i18n="feat_h2">Everything your trade relationship needs.</h2>
+      <p class="section-lead" data-i18n="feat_p">A focused partner app built around ordering, transparency and rewards.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12L4 3H2M6 6l1 9m10-9l1 9M9 20a1 1 0 1 0 0 .01M17 20a1 1 0 1 0 0 .01"/></svg></div>
+        <h3 data-i18n="f1_h">Order Directly</h3>
+        <p data-i18n="f1_p">Place orders directly in the app or continue with your regular sales representative.</p>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+        <h3 data-i18n="f2_h">Upload Invoices</h3>
+        <p data-i18n="f2_p">Snap and upload eligible purchase invoices without paperwork and follow-up calls.</p>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3 data-i18n="f3_h">Live Order &amp; Payment Status</h3>
+        <p data-i18n="f3_p">Know exactly where your order and payment stand as the status changes.</p>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div>
+        <h3 data-i18n="f4_h">Track Reward Points</h3>
+        <p data-i18n="f4_p">Watch your eligible reward points and balance grow in real time.</p>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.3L22 9.3l-5 5 1.2 7.2L12 18l-6.2 3.5L7 14.3l-5-5 7.1-1z"/></svg></div>
+        <h3 data-i18n="f5_h">Know Your Tier</h3>
+        <p data-i18n="f5_p">See your reward tier and the next milestone that can unlock additional benefits.</p>
+      </article>
+      <article class="feature reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h3 data-i18n="f6_h">Redeem In-App</h3>
+        <p data-i18n="f6_p">Choose gifts or a direct bank transfer and redeem directly from your phone.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="head center reveal">
+      <div class="eyebrow" style="color:#69D9EC" data-i18n="how_eyebrow">How it works</div>
+      <h2 class="section-title" data-i18n="how_h2">From order book to reward wallet.</h2>
+      <p class="section-lead" data-i18n="how_p">Six simple stages keep the complete partner journey moving.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3 data-i18n="s1_h">Register</h3><p data-i18n="s1_p">Sign up with your business details.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3 data-i18n="s2_h">Verify</h3><p data-i18n="s2_p">Download and verify your trade partner account.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3 data-i18n="s3_h">Order</h3><p data-i18n="s3_p">Place an order directly in the app.</p></div>
+      <div class="step reveal"><div class="step-num">04</div><h3 data-i18n="s4_h">Invoice</h3><p data-i18n="s4_p">Upload your eligible purchase invoice.</p></div>
+      <div class="step reveal"><div class="step-num">05</div><h3 data-i18n="s5_h">Track</h3><p data-i18n="s5_p">Watch points and tier status update.</p></div>
+      <div class="step reveal"><div class="step-num">06</div><h3 data-i18n="s6_h">Redeem</h3><p data-i18n="s6_p">Claim your reward when ready.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rewards" id="rewards">
+  <div class="container reward-layout">
+    <div class="reward-visual reveal">
+      <div class="carousel-viewport" id="carousel3">
+        <img class="carousel-slide active" src="https://play-lh.googleusercontent.com/BFoeKmSKKT4zUGiyykpMaxoCz3p4qg0N1YcIsSgqS3reY402z9kL3gCSB_QhtX8os32YkoBL7S1xM__Q_J_4=w800" alt="SwiftPlus rewards screen">
+        <img class="carousel-slide" src="https://play-lh.googleusercontent.com/f68dqfeKtCvPhSysLpUncbRUn5twtNtRSM2VZfegytDI83mGWc0lAbjQtfj0c3f6wfagxXuaqI_vwaEdhk6L2w=w800" alt="SwiftPlus app screen">
       </div>
-      <div class="problem-grid">
-        <div class="problem-card reveal">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-3-1.5-4.5-3-6-6l2-2-3-6z"/></svg>
-          <h4 data-i18n="p1_h">Manual, Repetitive Orders</h4>
-          <p data-i18n="p1_p">Calling in every order, reading out product names and quantities, then calling again to confirm it went through.</p>
-        </div>
-        <div class="problem-card reveal">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M4.5 8.5a4 4 0 0 1 4-4h7a4 4 0 0 1 0 8h-7a4 4 0 0 0 0 8h7a4 4 0 0 0 4-4"/></svg>
-          <h4 data-i18n="p2_h">Schemes You Never Hear About</h4>
-          <p data-i18n="p2_p">Reward slabs and seasonal offers that pass you by simply because there was no place to track them.</p>
-        </div>
-        <div class="problem-card reveal">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-          <h4 data-i18n="p3_h">No Clarity on Status</h4>
-          <p data-i18n="p3_p">No way to know if your order is confirmed, dispatched, or if your payment has even been recorded.</p>
-        </div>
+      <div class="reward-badge">
+        <small data-i18n="reward_wallet_label">SWIFTPLUS REWARD WALLET</small>
+        <strong><span id="rewardPoints2">0</span></strong>
+        <small data-i18n="points_available">points available</small>
       </div>
     </div>
-  </section>
-
-  <!-- COMPARISON -->
-  <section class="section bg-dim">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow" data-i18n="cmp_eyebrow">Before vs. After</div>
-        <h2 data-i18n="cmp_h2">The old way of ordering, next to the SwiftPlus way.</h2>
-      </div>
-      <div class="compare reveal">
-        <div class="compare-col old">
-          <span class="compare-label old" data-i18n="cmp_old_label">Without SwiftPlus</span>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#CC1E1E" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="cmp_old1">Orders placed over calls, noted by hand</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#CC1E1E" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="cmp_old2">Confirmation takes hours, sometimes days</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#CC1E1E" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="cmp_old3">Reward points calculated only at year-end, if at all</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#CC1E1E" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span data-i18n="cmp_old4">Payment status unclear until the next visit</span></div>
-        </div>
-        <div class="compare-mid">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="compare-col new">
-          <span class="compare-label new" data-i18n="cmp_new_label">With SwiftPlus</span>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#17A8E3" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="cmp_new1">Order in one tap, straight from your phone</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#17A8E3" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="cmp_new2">Instant confirmation, live status updates</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#17A8E3" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="cmp_new3">Points update the moment your order is eligible</span></div>
-          <div class="compare-item"><svg viewBox="0 0 24 24" fill="none" stroke="#17A8E3" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="cmp_new4">Payment status visible in the app, anytime</span></div>
-        </div>
+    <div class="reward-content reveal">
+      <div class="eyebrow" data-i18n="rew_eyebrow">The SwiftPlus scheme</div>
+      <h2 class="section-title">Zyada Lagao.<br>Zyada Kamao.<br><span style="color:var(--blue)">Zyada Paao.</span></h2>
+      <p class="section-lead" data-i18n="rew_p">The more you order, the more you earn. SwiftPlus makes the reward journey visible instead of leaving it hidden in calculations and follow-ups.</p>
+      <div class="reward-points">
+        <div class="reward-point"><b data-i18n="r1_b">Assured gifts</b><span data-i18n="r1_s">At every eligible milestone</span></div>
+        <div class="reward-point"><b data-i18n="r2_b">Lucky draws</b><span data-i18n="r2_s">Quarterly and annual</span></div>
+        <div class="reward-point"><b data-i18n="r3_b">Flexible redemption</b><span data-i18n="r3_s">Gift or bank transfer</span></div>
+        <div class="reward-point"><b data-i18n="r4_b">Transparent rewards</b><span data-i18n="r4_s">No hidden calculations</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURES -->
-  <section class="section" id="features">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow" data-i18n="feat_eyebrow">What You Get</div>
-        <h2 data-i18n="feat_h2">One app. Every order. Complete transparency.</h2>
-        <p data-i18n="feat_p">Everything you need to run your ordering and rewards with Ind-Swift, in a single place.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12L4 3H2M6 6l1 9m10-9l1 9M9 20a1 1 0 1 0 0 .01M17 20a1 1 0 1 0 0 .01"/></svg></div>
-          <h4 data-i18n="f1_h">Order Directly</h4>
-          <p data-i18n="f1_p">Place orders straight to Ind-Swift, or keep ordering through your regular sales representative — your choice, either way.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
-          <h4 data-i18n="f2_h">Upload Invoices</h4>
-          <p data-i18n="f2_p">Snap a photo and upload eligible purchase invoices in seconds — no paperwork, no follow-up calls.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-          <h4 data-i18n="f3_h">Live Order &amp; Payment Status</h4>
-          <p data-i18n="f3_p">Know exactly where your order and payment stand — confirmed, dispatched, or received — the moment it changes.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div>
-          <h4 data-i18n="f4_h">Track Reward Points</h4>
-          <p data-i18n="f4_p">Every eligible order adds points to your account — watch your balance grow in real time, with nothing hidden.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.3L22 9.3l-5 5 1.2 7.2L12 18l-6.2 3.5L7 14.3l-5-5 7.1-1z"/></svg></div>
-          <h4 data-i18n="f5_h">Know Your Tier</h4>
-          <p data-i18n="f5_p">See exactly which reward tier you qualify for and what the next milestone unlocks — always up to date.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
-          <h4 data-i18n="f6_h">Redeem In-App</h4>
-          <p data-i18n="f6_p">Choose between gifts or a direct bank transfer, and redeem straight from your phone — no waiting on anyone.</p>
-        </div>
+<section class="trust">
+  <div class="container trust-grid">
+    <div class="trust-photo reveal">
+      <div class="trust-seal">
+        <div class="trust-seal-inner"><strong>1986</strong><span data-i18n="since_short">SINCE</span></div>
       </div>
     </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section bg-dim" id="how">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow" data-i18n="how_eyebrow">How It Works</div>
-        <h2 data-i18n="how_h2">Six Steps From Order Book To Reward Wallet.</h2>
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="tr_eyebrow">Why trust Ind-Swift</div>
+      <h2 class="section-title" data-i18n="tr_h2">Four decades of pharma trust. Now in your pocket.</h2>
+      <p class="section-lead" data-i18n="tr_p">SwiftPlus brings the Ind-Swift trade partner experience into a modern digital channel, with the same focus on dependable pharma relationships.</p>
+      <div class="stats">
+        <div class="stat"><b>1986</b><span data-i18n="tr_s1">Since</span></div>
+        <div class="stat"><b>85+</b><span data-i18n="tr_s2">Countries</span></div>
+        <div class="stat"><b>#2</b><span data-i18n="tr_s3">North India pharma mfr.</span></div>
       </div>
-      <div class="steps">
-        <div class="step reveal"><div class="step-num">1</div><div class="step-line"></div><h4 data-i18n="s1_h">Register</h4><p data-i18n="s1_p">Sign up on SwiftPlus with your business details in under two minutes.</p></div>
-        <div class="step reveal"><div class="step-num">2</div><div class="step-line"></div><h4 data-i18n="s2_h">Download &amp; Verify</h4><p data-i18n="s2_p">Get the app from Google Play or the App Store and verify your trade partner account.</p></div>
-        <div class="step reveal"><div class="step-num">3</div><div class="step-line"></div><h4 data-i18n="s3_h">Place an Order</h4><p data-i18n="s3_p">Order directly in-app, or continue through your sales representative.</p></div>
-        <div class="step reveal"><div class="step-num">4</div><div class="step-line"></div><h4 data-i18n="s4_h">Upload Invoice</h4><p data-i18n="s4_p">Upload your eligible purchase invoice — it's linked to your order automatically.</p></div>
-        <div class="step reveal"><div class="step-num">5</div><div class="step-line"></div><h4 data-i18n="s5_h">Track Points</h4><p data-i18n="s5_p">Watch your reward points and tier update live as your order is processed.</p></div>
-        <div class="step reveal"><div class="step-num">6</div><h4 data-i18n="s6_h">Redeem</h4><p data-i18n="s6_p">Claim your reward — as a gift or a direct bank transfer, whenever you're ready.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REWARDS -->
-  <section class="section" id="rewards">
-    <div class="wrap">
-      <div class="rewards-band reveal">
-        <div class="eyebrow" style="margin-bottom:16px;" data-i18n="rew_eyebrow">The SwiftPlus Scheme</div>
-        <div class="tagline">Zyada Lagao. Zyada Kamao. Zyada Paao.</div>
-        <p data-i18n="rew_p">The more you order, the more you earn — and with SwiftPlus, you'll see every point of it, as it happens.</p>
-        <div class="reward-grid">
-          <div class="reward-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7h-9a2 2 0 1 1 2-2c0 1-1 2-1 2m8 0a2 2 0 1 0-2-2c0 1 1 2 1 2m-8 0H4v14h16V7zM12 7v14"/></svg><p data-i18n="r1">Assured gifts at every milestone you reach</p></div>
-          <div class="reward-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg><p data-i18n="r2">Quarterly and annual lucky draws</p></div>
-          <div class="reward-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><p data-i18n="r3">Choose between gifts or a direct bank transfer</p></div>
-          <div class="reward-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg><p data-i18n="r4">Complete transparency — no hidden calculations</p></div>
-        </div>
+      <div class="trust-list">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="tl1">Business data remains private</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="tl2">Data encrypted in transit</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="tl3">Built for registered Ind-Swift trade partners</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span><a href="tel:+919056629609" style="color:inherit">Direct support: +91 90566 29609</a></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg><span><a href="mailto:support@indswiftlabs.com" style="color:inherit">support@indswiftlabs.com</a></span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TRUST -->
-  <section class="section">
-    <div class="wrap trust">
-      <div class="reveal trust-copy">
-        <div class="eyebrow" data-i18n="tr_eyebrow">Why Trust Ind-Swift</div>
-        <h2 data-i18n="tr_h2">Backed by four decades of pharma manufacturing trust.</h2>
-        <p data-i18n="tr_p">Ind-Swift Laboratories has been manufacturing quality medicines since 1986, with a presence across 85+ countries and listings on the BSE and NSE. SwiftPlus simply brings that same trust to how you order and grow your business with us.</p>
-        <div class="trust-stats">
-          <div><strong>1986</strong><span data-i18n="tr_s1">Since</span></div>
-          <div><strong>85+</strong><span data-i18n="tr_s2">Countries</span></div>
-          <div><strong>#2</strong><span data-i18n="tr_s3">Pharma mfr., North India</span></div>
-        </div>
-      </div>
-      <div class="trust-panel reveal">
-        <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3.4 7.7-7 10-3.6-2.3-7-5-7-10V6l7-4z"/></svg><span data-i18n="tp1">No third-party data sharing — your business data stays private</span></div>
-        <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="tp2">Data encrypted in transit, always</span></div>
-        <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="tp3">Built and maintained for Ind-Swift's registered trade partners only</span></div>
-        <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg><span data-i18n="tp4"><a href="tel:+919056629609" style="color:inherit;">Direct line — call +91 90566 29609</a></span></div>
-        <div class="trust-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 6l-10 7L2 6M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span data-i18n="tp5">Direct support at support@indswiftlabs.com</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="section-tight">
-    <div class="wrap">
-      <div class="final-cta reveal">
-        <div class="eyebrow" style="margin-bottom:16px;" data-i18n="fc_eyebrow">Get Started Today</div>
-        <h2 data-i18n="fc_h2">Your next order could be your easiest yet.</h2>
-        <p data-i18n="fc_p">Join the retailers and stockists already ordering smarter, tracking every reward, and staying directly connected to Ind-Swift.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3.5v17a1 1 0 0 0 1.6.8l11-8.5a1 1 0 0 0 0-1.6L4.6 2.7A1 1 0 0 0 3 3.5z"/></svg>
-            <span data-i18n="btn_play2">Download on Google Play</span>
-          </a>
-          <a class="btn btn-outline" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener">
-            <svg width="17" height="17" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.6 59 129.3 107.2 127.8 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84.1 102.6-121.8-65.2-30.7-65.7-90-65.7-91.99zM256.4 88.9c26.6-31.6 24.2-60.4 23.4-70.9-23.6 1.4-50.9 16.4-66.5 34.8-17.2 19.5-27.3 43.6-25.2 70.4 25.7 2 49.1-10.9 68.3-34.3z"/></svg>
-            <span data-i18n="btn_appstore">Download on App Store</span>
-          </a>
-          <a class="btn btn-ghost" href="tel:+919056629609">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg>
-            <span data-i18n="btn_call">Call +91 90566 29609</span>
-          </a>
-        </div>
-        <p class="fine" data-i18n="fc_fine">SwiftPlus is available for Ind-Swift's registered retailers, chemists and stockists.</p>
+<section class="cta">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="eyebrow" style="color:#69D9EC" data-i18n="cta_eyebrow">Get started today</div>
+      <h2 class="section-title" data-i18n="cta_h2">Your next order can be your easiest yet.</h2>
+      <p data-i18n="cta_p">Order smarter, track every reward and stay directly connected with Ind-Swift through SwiftPlus.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3.5v17a1 1 0 0 0 1.6.8l11-8.5a1 1 0 0 0 0-1.6L4.6 2.7A1 1 0 0 0 3 3.5z"/></svg>
+          <span data-i18n="btn_play2">Download on Google Play</span>
+        </a>
+        <a class="btn btn-outline" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener">
+          <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.6 59 129.3 107.2 127.8 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84.1 102.6-121.8-65.2-30.7-65.7-90-65.7-91.99zM256.4 88.9c26.6-31.6 24.2-60.4 23.4-70.9-23.6 1.4-50.9 16.4-66.5 34.8-17.2 19.5-27.3 43.6-25.2 70.4 25.7 2 49.1-10.9 68.3-34.3z"/></svg>
+          <span data-i18n="btn_appstore">Download on App Store</span>
+        </a>
+        <a class="btn btn-white" href="tel:+919056629609">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg>
+          <span data-i18n="btn_call">Call +91 90566 29609</span>
+        </a>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
         <a class="brand" href="https://www.indswiftgroup.com/" target="_blank" rel="noopener">
-          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="19" fill="#0B2545"/>
-            <path d="M9 22 C14 14, 22 12, 31 15 C25 16, 20 19, 17 25 C14 22, 11 21, 9 22Z" fill="#F2A93B"/>
-            <path d="M14 27 C19 20, 27 18, 34 21" stroke="#17A8E3" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="12" fill="#0B427F"/>
+            <path d="M9 22C14 14 22 12 31 15C25 16 20 19 17 25C14 22 11 21 9 22Z" fill="#F6B63D"/>
+            <path d="M14 27C19 20 27 18 34 21" stroke="#54D2E8" stroke-width="2" stroke-linecap="round"/>
           </svg>
-          <span class="brand-text">SwiftPlus<span>+</span></span>
+          <span>SwiftPlus+ <small data-i18n="brand_sub">by Ind-Swift</small></span>
         </a>
-        <p data-i18n="foot_desc">SwiftPlus is the official ordering and rewards app for Ind-Swift Laboratories Ltd.'s trade partner network — developed and maintained by Electrovese Solutions Pvt. Ltd.</p>
+        <p style="margin-top:16px;max-width:420px" data-i18n="foot_desc">The official ordering and rewards app for Ind-Swift Laboratories Ltd.'s registered trade partner network.</p>
       </div>
       <div>
-        <h5 data-i18n="foot_explore">Explore</h5>
+        <h4 data-i18n="foot_explore">Explore</h4>
         <ul>
           <li><a href="#why" data-i18n="nav_why">Why SwiftPlus</a></li>
           <li><a href="#features" data-i18n="nav_features">Features</a></li>
-          <li><a href="#how" data-i18n="nav_how">How it Works</a></li>
+          <li><a href="#how" data-i18n="nav_how">How It Works</a></li>
           <li><a href="#rewards" data-i18n="nav_rewards">Rewards</a></li>
         </ul>
       </div>
       <div>
-        <h5>Ind-Swift Laboratories Ltd.</h5>
+        <h4 data-i18n="foot_contact">Contact</h4>
         <ul>
-          <li>SCO 850, Shivalik Enclave,<br>NAC Manimajra, Sector 13,<br>Chandigarh – 160101</li>
+          <li>Ind-Swift Laboratories Ltd.</li>
+          <li>SCO 850, Shivalik Enclave, NAC Manimajra, Chandigarh – 160101</li>
           <li><a href="tel:+919056629609">+91 90566 29609</a></li>
-          <li>0172-5061850</li>
           <li><a href="mailto:support@indswiftlabs.com">support@indswiftlabs.com</a></li>
-          <li><a href="https://www.indswiftgroup.com/" target="_blank" rel="noopener">indswiftgroup.com →</a></li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
+    <div class="copy">
       <span data-i18n="foot_copy">© <span id="year"></span> Ind-Swift Laboratories Ltd. All rights reserved.</span>
       <span data-i18n="foot_note">SwiftPlus is intended for registered trade partners only.</span>
     </div>
@@ -683,180 +699,207 @@
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ---------- Reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    },{threshold:0.15});
-    revealEls.forEach(el=>io.observe(el));
-  } else {
-    revealEls.forEach(el=>el.classList.add('in'));
+/* reveal on scroll */
+const revealEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+} else { revealEls.forEach(el=>el.classList.add('in')); }
+
+/* generic carousel builder */
+function initCarousel(id, interval){
+  const root = document.getElementById(id);
+  if(!root) return;
+  const slides = root.querySelectorAll('.carousel-slide');
+  const dots = root.querySelectorAll('.cdot');
+  let idx = 0, timer;
+  function show(i){
+    slides.forEach((s,n)=>s.classList.toggle('active', n===i));
+    dots.forEach((d,n)=>d.classList.toggle('active', n===i));
+    idx = i;
   }
+  function next(){ show((idx+1)%slides.length); }
+  function start(){ stop(); timer = setInterval(next, interval); }
+  function stop(){ if(timer) clearInterval(timer); }
+  start();
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  dots.forEach(d=>d.addEventListener('click', ()=>{ show(parseInt(d.dataset.i,10)); start(); }));
+}
+initCarousel('carousel', 3200);
+initCarousel('carousel2', 4200);
+initCarousel('carousel3', 3800);
 
-  /* ---------- Hero screenshot carousel (auto-scroll) ---------- */
-  (function(){
-    const root = document.getElementById('carousel');
-    if(!root) return;
-    const slides = root.querySelectorAll('.carousel-slide');
-    const dots = root.querySelectorAll('.cdot');
-    let idx = 0, timer;
-    function show(i){
-      slides.forEach((s,n)=>s.classList.toggle('active', n===i));
-      dots.forEach((d,n)=>d.classList.toggle('active', n===i));
-      idx = i;
-    }
-    function next(){ show((idx+1)%slides.length); }
-    function start(){ stop(); timer = setInterval(next, 3200); }
-    function stop(){ if(timer) clearInterval(timer); }
-    start();
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
-    dots.forEach(d=>d.addEventListener('click', ()=>{ show(parseInt(d.dataset.i,10)); start(); }));
-  })();
-
-  /* ---------- EN / HI language toggle ---------- */
-  const translations = {
-    brand_sub:{en:"by Ind-Swift",hi:"Ind-Swift द्वारा"},
-    nav_why:{en:"Why SwiftPlus",hi:"क्यों SwiftPlus"},
-    nav_features:{en:"Features",hi:"खूबियां"},
-    nav_how:{en:"How it Works",hi:"कैसे काम करता है"},
-    nav_rewards:{en:"Rewards",hi:"रिवॉर्ड्स"},
-    nav_cta:{en:"Get the App",hi:"ऐप पाएं"},
-
-    hero_eyebrow:{en:"SwiftPlus Partner App",hi:"SwiftPlus पार्टनर ऐप"},
-    hero_h1:{en:"Now Every Order<br><em>Shows a Reward.</em>",hi:"अब हर ऑर्डर का<br><em>रिवॉर्ड दिखेगा।</em>"},
-    hero_lead:{en:"One tap to order. Real-time status on every order and payment. A direct line to Ind-Swift — no more phone calls, no more waiting to find out where your order stands.",hi:"एक टैप में ऑर्डर करें। हर ऑर्डर और पेमेंट का स्टेटस तुरंत देखें। अब Ind-Swift से सीधा संपर्क — न बार-बार कॉल, न इंतज़ार।"},
-    btn_play:{en:"Google Play",hi:"Google Play"},
-    btn_how:{en:"See How It Works",hi:"जानें कैसे काम करता है"},
-    proof1:{en:"Order Placement",hi:"ऑर्डर प्लेसमेंट"},
-    proof2_num:{en:"Live",hi:"लाइव"},
-    proof2:{en:"Order &amp; Payment Status",hi:"ऑर्डर व पेमेंट स्टेटस"},
-    proof3:{en:"Transparent Rewards",hi:"पारदर्शी रिवॉर्ड्स"},
-
-    ledger_head:{en:"Order Register — Old Way",hi:"ऑर्डर रजिस्टर — पुराना तरीका"},
-    ledger1a:{en:"Order #114",hi:"ऑर्डर #114"},
-    ledger1b:{en:"Called 3x",hi:"3 बार कॉल"},
-    ledger2a:{en:"Scheme Offer",hi:"स्कीम ऑफर"},
-    ledger2b:{en:"Missed",hi:"छूट गया"},
-    ledger3a:{en:"Confirmation",hi:"कन्फर्मेशन"},
-    ledger3b:{en:"Pending...",hi:"पेंडिंग..."},
-    ledger4a:{en:"Reward Points",hi:"रिवॉर्ड पॉइंट्स"},
-    ledger4b:{en:"Unknown",hi:"अज्ञात"},
-    ledger_stamp:{en:"DELAYED",hi:"देरी"},
-
-    why_eyebrow:{en:"The Problem",hi:"समस्या"},
-    why_h2:{en:"Running your pharmacy shouldn't mean chasing your own orders.",hi:"अपनी दुकान चलाने का मतलब अपने ही ऑर्डर के पीछे भागना नहीं होना चाहिए।"},
-    why_p:{en:"Most retailers and stockists still order the way pharma trade has for decades — over the phone, through a field rep, with no real way to check status until the delivery van shows up. SwiftPlus was built to close that gap.",hi:"ज़्यादातर रिटेलर और स्टॉकिस्ट आज भी दशकों पुराने तरीके से ऑर्डर करते हैं — फोन कॉल पर, सेल्स रिप के ज़रिए, और डिलीवरी आने तक स्टेटस जानने का कोई तरीका नहीं। SwiftPlus इसी कमी को दूर करने के लिए बनाया गया है।"},
-    p1_h:{en:"Manual, Repetitive Orders",hi:"बार-बार मैन्युअल ऑर्डर"},
-    p1_p:{en:"Calling in every order, reading out product names and quantities, then calling again to confirm it went through.",hi:"हर ऑर्डर के लिए कॉल करना, प्रोडक्ट के नाम और मात्रा बताना, फिर कन्फर्म करने के लिए दोबारा कॉल करना।"},
-    p2_h:{en:"Schemes You Never Hear About",hi:"स्कीम्स जो कभी पता ही नहीं चलतीं"},
-    p2_p:{en:"Reward slabs and seasonal offers that pass you by simply because there was no place to track them.",hi:"रिवॉर्ड स्लैब और सीज़नल ऑफर जो सिर्फ इसलिए छूट जाते हैं क्योंकि उन्हें ट्रैक करने की कोई जगह नहीं थी।"},
-    p3_h:{en:"No Clarity on Status",hi:"ऑर्डर स्टेटस की कोई जानकारी नहीं"},
-    p3_p:{en:"No way to know if your order is confirmed, dispatched, or if your payment has even been recorded.",hi:"यह पता ही नहीं चलता कि ऑर्डर कन्फर्म हुआ या नहीं, डिस्पैच हुआ या नहीं, या पेमेंट दर्ज हुआ या नहीं।"},
-
-    cmp_eyebrow:{en:"Before vs. After",hi:"पहले बनाम अब"},
-    cmp_h2:{en:"The old way of ordering, next to the SwiftPlus way.",hi:"पुराना तरीका बनाम SwiftPlus का तरीका।"},
-    cmp_old_label:{en:"Without SwiftPlus",hi:"SwiftPlus के बिना"},
-    cmp_new_label:{en:"With SwiftPlus",hi:"SwiftPlus के साथ"},
-    cmp_old1:{en:"Orders placed over calls, noted by hand",hi:"फोन कॉल पर ऑर्डर, हाथ से नोट"},
-    cmp_old2:{en:"Confirmation takes hours, sometimes days",hi:"कन्फर्मेशन में घंटों, कभी-कभी दिन लगते हैं"},
-    cmp_old3:{en:"Reward points calculated only at year-end, if at all",hi:"रिवॉर्ड पॉइंट्स सिर्फ साल के अंत में, वो भी कभी-कभी"},
-    cmp_old4:{en:"Payment status unclear until the next visit",hi:"अगली विज़िट तक पेमेंट स्टेटस साफ नहीं होता"},
-    cmp_new1:{en:"Order in one tap, straight from your phone",hi:"फोन से एक टैप में ऑर्डर"},
-    cmp_new2:{en:"Instant confirmation, live status updates",hi:"तुरंत कन्फर्मेशन, लाइव स्टेटस अपडेट"},
-    cmp_new3:{en:"Points update the moment your order is eligible",hi:"ऑर्डर योग्य होते ही पॉइंट्स अपडेट"},
-    cmp_new4:{en:"Payment status visible in the app, anytime",hi:"पेमेंट स्टेटस ऐप में कभी भी देखें"},
-
-    feat_eyebrow:{en:"What You Get",hi:"आपको क्या मिलता है"},
-    feat_h2:{en:"One app. Every order. Complete transparency.",hi:"एक ऐप। हर ऑर्डर। पूरी पारदर्शिता।"},
-    feat_p:{en:"Everything you need to run your ordering and rewards with Ind-Swift, in a single place.",hi:"Ind-Swift के साथ अपने ऑर्डर और रिवॉर्ड्स को मैनेज करने के लिए जो कुछ चाहिए, वो सब एक ही जगह।"},
-    f1_h:{en:"Order Directly",hi:"सीधे ऑर्डर करें"},
-    f1_p:{en:"Place orders straight to Ind-Swift, or keep ordering through your regular sales representative — your choice, either way.",hi:"Ind-Swift को सीधे ऑर्डर दें, या अपने सेल्स रिप्रेजेंटेटिव के ज़रिए ऑर्डर करना जारी रखें — जैसा आपको सही लगे।"},
-    f2_h:{en:"Upload Invoices",hi:"इनवॉइस अपलोड करें"},
-    f2_p:{en:"Snap a photo and upload eligible purchase invoices in seconds — no paperwork, no follow-up calls.",hi:"फोटो खींचें और योग्य खरीद के इनवॉइस सेकंडों में अपलोड करें — कोई कागज़ी काम नहीं।"},
-    f3_h:{en:"Live Order &amp; Payment Status",hi:"लाइव ऑर्डर व पेमेंट स्टेटस"},
-    f3_p:{en:"Know exactly where your order and payment stand — confirmed, dispatched, or received — the moment it changes.",hi:"जानें आपका ऑर्डर और पेमेंट कहाँ तक पहुंचा — कन्फर्म, डिस्पैच या प्राप्त — बदलते ही तुरंत।"},
-    f4_h:{en:"Track Reward Points",hi:"रिवॉर्ड पॉइंट्स ट्रैक करें"},
-    f4_p:{en:"Every eligible order adds points to your account — watch your balance grow in real time, with nothing hidden.",hi:"हर योग्य ऑर्डर पर पॉइंट्स जुड़ते हैं — अपना बैलेंस रियल टाइम में बढ़ता देखें, कुछ भी छुपा नहीं।"},
-    f5_h:{en:"Know Your Tier",hi:"अपना टियर जानें"},
-    f5_p:{en:"See exactly which reward tier you qualify for and what the next milestone unlocks — always up to date.",hi:"देखें आप किस रिवॉर्ड टियर में हैं और अगला माइलस्टोन क्या अनलॉक करेगा — हमेशा अपडेटेड।"},
-    f6_h:{en:"Redeem In-App",hi:"ऐप में ही रिडीम करें"},
-    f6_p:{en:"Choose between gifts or a direct bank transfer, and redeem straight from your phone — no waiting on anyone.",hi:"गिफ्ट या सीधा बैंक ट्रांसफर चुनें, और अपने फोन से ही रिडीम करें — किसी का इंतज़ार नहीं।"},
-
-    how_eyebrow:{en:"How It Works",hi:"कैसे काम करता है"},
-    how_h2:{en:"Six Steps From Order Book To Reward Wallet.",hi:"ऑर्डर बुक से रिवॉर्ड वॉलेट तक — सिर्फ 6 कदम।"},
-    s1_h:{en:"Register",hi:"रजिस्टर करें"},
-    s1_p:{en:"Sign up on SwiftPlus with your business details in under two minutes.",hi:"अपने बिज़नेस की जानकारी के साथ दो मिनट में SwiftPlus पर साइन अप करें।"},
-    s2_h:{en:"Download &amp; Verify",hi:"डाउनलोड व वेरिफाई करें"},
-    s2_p:{en:"Get the app from Google Play or the App Store and verify your trade partner account.",hi:"Google Play या App Store से ऐप डाउनलोड करें और अपना पार्टनर अकाउंट वेरिफाई करें।"},
-    s3_h:{en:"Place an Order",hi:"ऑर्डर करें"},
-    s3_p:{en:"Order directly in-app, or continue through your sales representative.",hi:"ऐप में सीधे ऑर्डर करें, या अपने सेल्स रिप्रेजेंटेटिव के ज़रिए जारी रखें।"},
-    s4_h:{en:"Upload Invoice",hi:"इनवॉइस अपलोड करें"},
-    s4_p:{en:"Upload your eligible purchase invoice — it's linked to your order automatically.",hi:"अपना योग्य खरीद इनवॉइस अपलोड करें — यह अपने आप आपके ऑर्डर से जुड़ जाता है।"},
-    s5_h:{en:"Track Points",hi:"पॉइंट्स ट्रैक करें"},
-    s5_p:{en:"Watch your reward points and tier update live as your order is processed.",hi:"ऑर्डर प्रोसेस होते ही अपने रिवॉर्ड पॉइंट्स और टियर को लाइव अपडेट होते देखें।"},
-    s6_h:{en:"Redeem",hi:"रिडीम करें"},
-    s6_p:{en:"Claim your reward — as a gift or a direct bank transfer, whenever you're ready.",hi:"अपना रिवॉर्ड क्लेम करें — गिफ्ट के रूप में या सीधा बैंक ट्रांसफर, जब भी आप तैयार हों।"},
-
-    rew_eyebrow:{en:"The SwiftPlus Scheme",hi:"SwiftPlus स्कीम"},
-    rew_p:{en:"The more you order, the more you earn — and with SwiftPlus, you'll see every point of it, as it happens.",hi:"जितना ज़्यादा ऑर्डर, उतनी ज़्यादा कमाई — और SwiftPlus के साथ, आप हर पॉइंट को होते हुए देखेंगे।"},
-    r1:{en:"Assured gifts at every milestone you reach",hi:"हर माइलस्टोन पर पक्का गिफ्ट"},
-    r2:{en:"Quarterly and annual lucky draws",hi:"त्रैमासिक और वार्षिक लकी ड्रॉ"},
-    r3:{en:"Choose between gifts or a direct bank transfer",hi:"गिफ्ट या सीधा बैंक ट्रांसफर चुनें"},
-    r4:{en:"Complete transparency — no hidden calculations",hi:"पूरी पारदर्शिता — कोई छुपी गणना नहीं"},
-
-    tr_eyebrow:{en:"Why Trust Ind-Swift",hi:"Ind-Swift पर भरोसा क्यों"},
-    tr_h2:{en:"Backed by four decades of pharma manufacturing trust.",hi:"चार दशकों के फार्मा भरोसे के साथ।"},
-    tr_p:{en:"Ind-Swift Laboratories has been manufacturing quality medicines since 1986, with a presence across 85+ countries and listings on the BSE and NSE. SwiftPlus simply brings that same trust to how you order and grow your business with us.",hi:"Ind-Swift Laboratories 1986 से गुणवत्तापूर्ण दवाइयां बना रहा है, 85+ देशों में मौजूदगी और BSE व NSE पर लिस्टिंग के साथ। SwiftPlus बस उसी भरोसे को आपके ऑर्डर करने के तरीके तक लाता है।"},
-    tr_s1:{en:"Since",hi:"स्थापना"},
-    tr_s2:{en:"Countries",hi:"देश"},
-    tr_s3:{en:"Pharma mfr., North India",hi:"उत्तर भारत में फार्मा निर्माता"},
-    tp1:{en:"No third-party data sharing — your business data stays private",hi:"किसी तीसरे पक्ष से डेटा शेयर नहीं — आपका बिज़नेस डेटा पूरी तरह सुरक्षित"},
-    tp2:{en:"Data encrypted in transit, always",hi:"डेटा हमेशा एन्क्रिप्टेड रहता है"},
-    tp3:{en:"Built and maintained for Ind-Swift's registered trade partners only",hi:"सिर्फ Ind-Swift के रजिस्टर्ड ट्रेड पार्टनर्स के लिए बनाया गया"},
-    tp4:{en:'<a href="tel:+919056629609" style="color:inherit;">Direct line — call +91 90566 29609</a>',hi:'<a href="tel:+919056629609" style="color:inherit;">सीधे बात करें — +91 90566 29609</a>'},
-    tp5:{en:"Direct support at support@indswiftlabs.com",hi:"सीधा सपोर्ट: support@indswiftlabs.com"},
-
-    fc_eyebrow:{en:"Get Started Today",hi:"आज ही शुरू करें"},
-    fc_h2:{en:"Your next order could be your easiest yet.",hi:"आपका अगला ऑर्डर अब तक का सबसे आसान हो सकता है।"},
-    fc_p:{en:"Join the retailers and stockists already ordering smarter, tracking every reward, and staying directly connected to Ind-Swift.",hi:"उन रिटेलर और स्टॉकिस्ट से जुड़ें जो पहले से ही स्मार्ट तरीके से ऑर्डर कर रहे हैं, हर रिवॉर्ड ट्रैक कर रहे हैं, और सीधे Ind-Swift से जुड़े हैं।"},
-    btn_play2:{en:"Download on Google Play",hi:"Google Play से डाउनलोड करें"},
-    btn_appstore:{en:"Download on App Store",hi:"App Store से डाउनलोड करें"},
-    btn_call:{en:"Call +91 90566 29609",hi:"कॉल करें +91 90566 29609"},
-    fc_fine:{en:"SwiftPlus is available for Ind-Swift's registered retailers, chemists and stockists.",hi:"SwiftPlus, Ind-Swift के रजिस्टर्ड रिटेलर, केमिस्ट और स्टॉकिस्ट के लिए उपलब्ध है।"},
-
-    foot_desc:{en:"SwiftPlus is the official ordering and rewards app for Ind-Swift Laboratories Ltd.'s trade partner network — developed and maintained by Electrovese Solutions Pvt. Ltd.",hi:"SwiftPlus, Ind-Swift Laboratories Ltd. के ट्रेड पार्टनर नेटवर्क के लिए आधिकारिक ऑर्डरिंग व रिवॉर्ड्स ऐप है — जिसे Electrovese Solutions Pvt. Ltd. द्वारा विकसित और संचालित किया जाता है।"},
-    foot_explore:{en:"Explore",hi:"एक्सप्लोर करें"},
-    foot_copy:{en:'© <span id="year"></span> Ind-Swift Laboratories Ltd. All rights reserved.',hi:'© <span id="year"></span> Ind-Swift Laboratories Ltd. सर्वाधिकार सुरक्षित।'},
-    foot_note:{en:"SwiftPlus is intended for registered trade partners only.",hi:"SwiftPlus केवल रजिस्टर्ड ट्रेड पार्टनर्स के लिए है।"}
+/* animated point counters */
+function animateCount(el, target, dur){
+  if(!el) return;
+  let started = false;
+  const run = ()=>{
+    if(started) return; started = true;
+    const startTime = performance.now();
+    const step = (t)=>{
+      const p = Math.min(1,(t-startTime)/dur);
+      const val = Math.floor(target * (1 - Math.pow(1-p,3)));
+      el.textContent = val.toLocaleString('en-IN');
+      if(p<1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   };
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) run(); }); },{threshold:0.4});
+    io.observe(el);
+  } else { run(); }
+}
+animateCount(document.getElementById('heroPoints'), 2450, 1400);
+animateCount(document.getElementById('rewardPoints2'), 2450, 1400);
 
-  function setLang(lang){
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      const entry = translations[key];
-      if(entry && entry[lang] !== undefined){ el.innerHTML = entry[lang]; }
-    });
-    document.querySelectorAll('.lang-btn').forEach(b=>{
-      b.classList.toggle('active', b.dataset.lang===lang);
-    });
-    const y = document.getElementById('year');
-    if(y) y.textContent = new Date().getFullYear();
-    try{ localStorage.setItem('swiftplus_lang', lang); }catch(e){}
-  }
-  document.querySelectorAll('.lang-btn').forEach(b=>{
-    b.addEventListener('click', ()=> setLang(b.dataset.lang));
+/* EN / HI toggle */
+const translations = {
+  brand_sub:{en:"by Ind-Swift",hi:"Ind-Swift द्वारा"},
+  nav_why:{en:"Why SwiftPlus",hi:"क्यों SwiftPlus"},
+  nav_features:{en:"Features",hi:"खूबियां"},
+  nav_how:{en:"How It Works",hi:"कैसे काम करता है"},
+  nav_rewards:{en:"Rewards",hi:"रिवॉर्ड्स"},
+  nav_cta:{en:"Get the App",hi:"ऐप पाएं"},
+
+  hero_kicker:{en:"SwiftPlus Partner App",hi:"SwiftPlus पार्टनर ऐप"},
+  hero_h1:{en:'Smarter pharma trade.<br><span>Every order counts.</span>',hi:'स्मार्ट फार्मा ट्रेड।<br><span>हर ऑर्डर मायने रखता है।</span>'},
+  hero_copy:{en:"A modern digital partner experience for Ind-Swift retailers, chemists and stockists. Order faster, track payments, upload invoices and turn eligible purchases into visible rewards.",hi:"Ind-Swift के रिटेलर, केमिस्ट और स्टॉकिस्ट के लिए एक आधुनिक डिजिटल पार्टनर अनुभव। तेज़ ऑर्डर करें, पेमेंट ट्रैक करें, इनवॉइस अपलोड करें और हर योग्य खरीद को दिखने वाले रिवॉर्ड में बदलें।"},
+  btn_play:{en:"Google Play",hi:"Google Play"},
+  btn_appstore_short:{en:"App Store",hi:"App Store"},
+  btn_how:{en:"See How It Works",hi:"जानें कैसे काम करता है"},
+  proof1:{en:"Order placement",hi:"ऑर्डर प्लेसमेंट"},
+  proof2_num:{en:"Live",hi:"लाइव"},
+  proof2:{en:"Order &amp; payment status",hi:"ऑर्डर व पेमेंट स्टेटस"},
+  proof3:{en:"Reward visibility",hi:"रिवॉर्ड पारदर्शिता"},
+
+  reward_wallet_label:{en:"REWARD WALLET",hi:"रिवॉर्ड वॉलेट"},
+  updated_live:{en:"Updated live",hi:"लाइव अपडेट"},
+  order_label:{en:"ORDER #114",hi:"ऑर्डर #114"},
+  dispatch_confirmed:{en:"Dispatch confirmed",hi:"डिस्पैच कन्फर्म"},
+  ready_to_ship:{en:"Ready to ship",hi:"भेजने के लिए तैयार"},
+  phone_tag_b:{en:"One connected partner journey",hi:"एक जुड़ी हुई पार्टनर यात्रा"},
+  phone_tag_small:{en:"Order → Invoice → Status → Points → Reward",hi:"ऑर्डर → इनवॉइस → स्टेटस → पॉइंट्स → रिवॉर्ड"},
+
+  trust_strip:{en:"BUILT FOR IND-SWIFT'S REGISTERED TRADE PARTNER NETWORK",hi:"Ind-Swift के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए बनाया गया"},
+  chip1:{en:"Retailers",hi:"रिटेलर"},
+  chip2:{en:"Chemists",hi:"केमिस्ट"},
+  chip3:{en:"Stockists",hi:"स्टॉकिस्ट"},
+  chip4:{en:"Pharma Trade",hi:"फार्मा ट्रेड"},
+
+  why_eyebrow:{en:"The old pharma trade experience",hi:"पुराना फार्मा ट्रेड अनुभव"},
+  why_h2:{en:"Less chasing.<br>More control.",hi:"कम भागदौड़।<br>ज़्यादा नियंत्रण।"},
+  why_p:{en:"SwiftPlus closes the everyday gaps between placing an order, knowing its status and understanding what you have earned.",hi:"SwiftPlus ऑर्डर देने, उसका स्टेटस जानने और आपने क्या कमाया यह समझने के बीच की रोज़ की कमियों को दूर करता है।"},
+  p1_h:{en:"Manual, repetitive ordering",hi:"बार-बार मैन्युअल ऑर्डर"},
+  p1_p:{en:"Repeated calls, product names, quantities and confirmation follow-ups slow down a busy pharmacy.",hi:"बार-बार कॉल, प्रोडक्ट के नाम, मात्रा और कन्फर्मेशन फॉलो-अप — यह व्यस्त दुकान को धीमा कर देता है।"},
+  p2_h:{en:"Schemes can get missed",hi:"स्कीम्स छूट सकती हैं"},
+  p2_p:{en:"Reward slabs and seasonal offers are difficult to follow when there is no single digital place to track them.",hi:"रिवॉर्ड स्लैब और सीज़नल ऑफर ट्रैक करना मुश्किल है जब उन्हें देखने की कोई एक डिजिटल जगह नहीं होती।"},
+  p3_h:{en:"Status is often unclear",hi:"स्टेटस अक्सर साफ नहीं होता"},
+  p3_p:{en:"Know whether an order is confirmed, dispatched or whether payment has been recorded without another call.",hi:"बिना दोबारा कॉल किए जानें कि ऑर्डर कन्फर्म हुआ, डिस्पैच हुआ या पेमेंट दर्ज हुआ।"},
+
+  sol_eyebrow:{en:"The SwiftPlus difference",hi:"SwiftPlus का फर्क"},
+  sol_h2:{en:"One app.<br>One source of truth.",hi:"एक ऐप।<br>एक ही सच्चाई का स्रोत।"},
+  sol_p:{en:"From the first tap to the final reward, the journey becomes visible, trackable and easier to manage.",hi:"पहले टैप से लेकर आखिरी रिवॉर्ड तक, पूरी यात्रा दिखने योग्य, ट्रैक करने योग्य और मैनेज करने में आसान हो जाती है।"},
+  sol_img_b:{en:"Digital pharma partnering, redesigned.",hi:"डिजिटल फार्मा पार्टनरशिप, नए सिरे से।"},
+  sol_img_span:{en:"A cleaner connection between Ind-Swift and the trade partner.",hi:"Ind-Swift और ट्रेड पार्टनर के बीच एक साफ़ जुड़ाव।"},
+  sol1_h:{en:"Order directly",hi:"सीधे ऑर्डर करें"},
+  sol1_p:{en:"Place orders straight to Ind-Swift or continue through your regular sales representative.",hi:"Ind-Swift को सीधे ऑर्डर दें या अपने सेल्स रिप्रेजेंटेटिव के ज़रिए जारी रखें।"},
+  sol2_h:{en:"Upload invoices",hi:"इनवॉइस अपलोड करें"},
+  sol2_p:{en:"Capture eligible purchase invoices from your phone and keep the process digital.",hi:"अपने फोन से योग्य खरीद इनवॉइस कैप्चर करें और पूरी प्रक्रिया डिजिटल रखें।"},
+  sol3_h:{en:"Track live status",hi:"लाइव स्टेटस ट्रैक करें"},
+  sol3_p:{en:"See order and payment progress as the status changes.",hi:"स्टेटस बदलते ही ऑर्डर और पेमेंट की प्रगति देखें।"},
+
+  feat_eyebrow:{en:"What you get",hi:"आपको क्या मिलता है"},
+  feat_h2:{en:"Everything your trade relationship needs.",hi:"आपके ट्रेड रिश्ते को जो कुछ चाहिए, वो सब।"},
+  feat_p:{en:"A focused partner app built around ordering, transparency and rewards.",hi:"ऑर्डरिंग, पारदर्शिता और रिवॉर्ड्स के इर्द-गिर्द बना एक फोकस्ड पार्टनर ऐप।"},
+  f1_h:{en:"Order Directly",hi:"सीधे ऑर्डर करें"},
+  f1_p:{en:"Place orders directly in the app or continue with your regular sales representative.",hi:"ऐप में सीधे ऑर्डर करें या अपने सेल्स रिप्रेजेंटेटिव के साथ जारी रखें।"},
+  f2_h:{en:"Upload Invoices",hi:"इनवॉइस अपलोड करें"},
+  f2_p:{en:"Snap and upload eligible purchase invoices without paperwork and follow-up calls.",hi:"बिना कागज़ी काम और फॉलो-अप कॉल के योग्य खरीद इनवॉइस अपलोड करें।"},
+  f3_h:{en:"Live Order &amp; Payment Status",hi:"लाइव ऑर्डर व पेमेंट स्टेटस"},
+  f3_p:{en:"Know exactly where your order and payment stand as the status changes.",hi:"स्टेटस बदलते ही जानें आपका ऑर्डर और पेमेंट कहाँ तक पहुंचा।"},
+  f4_h:{en:"Track Reward Points",hi:"रिवॉर्ड पॉइंट्स ट्रैक करें"},
+  f4_p:{en:"Watch your eligible reward points and balance grow in real time.",hi:"अपने योग्य रिवॉर्ड पॉइंट्स और बैलेंस को रियल टाइम में बढ़ता देखें।"},
+  f5_h:{en:"Know Your Tier",hi:"अपना टियर जानें"},
+  f5_p:{en:"See your reward tier and the next milestone that can unlock additional benefits.",hi:"अपना रिवॉर्ड टियर और अगला माइलस्टोन देखें जो अतिरिक्त लाभ अनलॉक कर सकता है।"},
+  f6_h:{en:"Redeem In-App",hi:"ऐप में ही रिडीम करें"},
+  f6_p:{en:"Choose gifts or a direct bank transfer and redeem directly from your phone.",hi:"गिफ्ट या सीधा बैंक ट्रांसफर चुनें और अपने फोन से ही रिडीम करें।"},
+
+  how_eyebrow:{en:"How it works",hi:"कैसे काम करता है"},
+  how_h2:{en:"From order book to reward wallet.",hi:"ऑर्डर बुक से रिवॉर्ड वॉलेट तक।"},
+  how_p:{en:"Six simple stages keep the complete partner journey moving.",hi:"छह आसान चरण पूरी पार्टनर यात्रा को आगे बढ़ाते हैं।"},
+  s1_h:{en:"Register",hi:"रजिस्टर करें"},
+  s1_p:{en:"Sign up with your business details.",hi:"अपने बिज़नेस की जानकारी के साथ साइन अप करें।"},
+  s2_h:{en:"Verify",hi:"वेरिफाई करें"},
+  s2_p:{en:"Download and verify your trade partner account.",hi:"डाउनलोड करें और अपना पार्टनर अकाउंट वेरिफाई करें।"},
+  s3_h:{en:"Order",hi:"ऑर्डर करें"},
+  s3_p:{en:"Place an order directly in the app.",hi:"ऐप में सीधे ऑर्डर करें।"},
+  s4_h:{en:"Invoice",hi:"इनवॉइस"},
+  s4_p:{en:"Upload your eligible purchase invoice.",hi:"अपना योग्य खरीद इनवॉइस अपलोड करें।"},
+  s5_h:{en:"Track",hi:"ट्रैक करें"},
+  s5_p:{en:"Watch points and tier status update.",hi:"पॉइंट्स और टियर स्टेटस अपडेट होते देखें।"},
+  s6_h:{en:"Redeem",hi:"रिडीम करें"},
+  s6_p:{en:"Claim your reward when ready.",hi:"जब तैयार हों, अपना रिवॉर्ड क्लेम करें।"},
+
+  rew_eyebrow:{en:"The SwiftPlus scheme",hi:"SwiftPlus स्कीम"},
+  rew_p:{en:"The more you order, the more you earn. SwiftPlus makes the reward journey visible instead of leaving it hidden in calculations and follow-ups.",hi:"जितना ज़्यादा ऑर्डर, उतनी ज़्यादा कमाई। SwiftPlus रिवॉर्ड यात्रा को दिखने योग्य बनाता है, गणनाओं और फॉलो-अप में छुपाए रखने के बजाय।"},
+  r1_b:{en:"Assured gifts",hi:"पक्का गिफ्ट"},
+  r1_s:{en:"At every eligible milestone",hi:"हर योग्य माइलस्टोन पर"},
+  r2_b:{en:"Lucky draws",hi:"लकी ड्रॉ"},
+  r2_s:{en:"Quarterly and annual",hi:"त्रैमासिक और वार्षिक"},
+  r3_b:{en:"Flexible redemption",hi:"लचीला रिडेम्पशन"},
+  r3_s:{en:"Gift or bank transfer",hi:"गिफ्ट या बैंक ट्रांसफर"},
+  r4_b:{en:"Transparent rewards",hi:"पारदर्शी रिवॉर्ड्स"},
+  r4_s:{en:"No hidden calculations",hi:"कोई छुपी गणना नहीं"},
+  points_available:{en:"points available",hi:"पॉइंट्स उपलब्ध"},
+
+  since_short:{en:"SINCE",hi:"स्थापना"},
+  tr_eyebrow:{en:"Why trust Ind-Swift",hi:"Ind-Swift पर भरोसा क्यों"},
+  tr_h2:{en:"Four decades of pharma trust. Now in your pocket.",hi:"चार दशकों का फार्मा भरोसा। अब आपकी जेब में।"},
+  tr_p:{en:"SwiftPlus brings the Ind-Swift trade partner experience into a modern digital channel, with the same focus on dependable pharma relationships.",hi:"SwiftPlus, Ind-Swift के ट्रेड पार्टनर अनुभव को एक आधुनिक डिजिटल चैनल में लाता है, भरोसेमंद फार्मा रिश्तों पर उसी फोकस के साथ।"},
+  tr_s1:{en:"Since",hi:"स्थापना"},
+  tr_s2:{en:"Countries",hi:"देश"},
+  tr_s3:{en:"North India pharma mfr.",hi:"उत्तर भारत में फार्मा निर्माता"},
+  tl1:{en:"Business data remains private",hi:"बिज़नेस डेटा पूरी तरह निजी रहता है"},
+  tl2:{en:"Data encrypted in transit",hi:"डेटा हमेशा एन्क्रिप्टेड रहता है"},
+  tl3:{en:"Built for registered Ind-Swift trade partners",hi:"रजिस्टर्ड Ind-Swift ट्रेड पार्टनर्स के लिए बनाया गया"},
+
+  cta_eyebrow:{en:"Get started today",hi:"आज ही शुरू करें"},
+  cta_h2:{en:"Your next order can be your easiest yet.",hi:"आपका अगला ऑर्डर अब तक का सबसे आसान हो सकता है।"},
+  cta_p:{en:"Order smarter, track every reward and stay directly connected with Ind-Swift through SwiftPlus.",hi:"स्मार्ट तरीके से ऑर्डर करें, हर रिवॉर्ड ट्रैक करें और SwiftPlus के ज़रिए सीधे Ind-Swift से जुड़े रहें।"},
+  btn_play2:{en:"Download on Google Play",hi:"Google Play से डाउनलोड करें"},
+  btn_appstore:{en:"Download on App Store",hi:"App Store से डाउनलोड करें"},
+  btn_call:{en:"Call +91 90566 29609",hi:"कॉल करें +91 90566 29609"},
+
+  foot_desc:{en:"The official ordering and rewards app for Ind-Swift Laboratories Ltd.'s registered trade partner network.",hi:"Ind-Swift Laboratories Ltd. के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए आधिकारिक ऑर्डरिंग व रिवॉर्ड्स ऐप।"},
+  foot_explore:{en:"Explore",hi:"एक्सप्लोर करें"},
+  foot_contact:{en:"Contact",hi:"संपर्क"},
+  foot_copy:{en:'© <span id="year"></span> Ind-Swift Laboratories Ltd. All rights reserved.',hi:'© <span id="year"></span> Ind-Swift Laboratories Ltd. सर्वाधिकार सुरक्षित।'},
+  foot_note:{en:"SwiftPlus is intended for registered trade partners only.",hi:"SwiftPlus केवल रजिस्टर्ड ट्रेड पार्टनर्स के लिए है।"}
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const entry = translations[key];
+    if(entry && entry[lang] !== undefined){ el.innerHTML = entry[lang]; }
   });
-  let savedLang = 'en';
-  try{ savedLang = localStorage.getItem('swiftplus_lang') || 'en'; }catch(e){}
-  setLang(savedLang);
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  const y = document.getElementById('year');
+  if(y) y.textContent = new Date().getFullYear();
+  try{ localStorage.setItem('swiftplus_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.addEventListener('click', ()=> setLang(b.dataset.lang));
+});
+let savedLang = 'en';
+try{ savedLang = localStorage.getItem('swiftplus_lang') || 'en'; }catch(e){}
+setLang(savedLang);
 </script>
-
 </body>
 </html>
