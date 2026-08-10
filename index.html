@@ -202,26 +202,36 @@ html[lang="hi"] .kicker{letter-spacing:0}
 .cdot.active{background:var(--gold);width:15px;border-radius:3px}
 
 .phone-tag{
-  position:absolute;left:-18px;bottom:66px;width:178px;padding:15px;border-radius:16px;
-  background:rgba(255,255,255,.96);color:var(--ink);box-shadow:var(--shadow);transform:rotate(-4deg);z-index:6
+  position:absolute;left:-10px;top:10px;width:168px;padding:15px;border-radius:16px;
+  background:rgba(255,255,255,.97);color:var(--ink);box-shadow:var(--shadow);transform:rotate(-4deg);z-index:6
 }
 .phone-tag b{display:block;font-size:12px;color:var(--navy)}
 .phone-tag small{font-size:9.5px;color:var(--muted)}
 .floating-card{
-  position:absolute;background:rgba(255,255,255,.96);color:var(--ink);border-radius:17px;
-  padding:14px 16px;box-shadow:var(--shadow);z-index:7
+  position:absolute;background:rgba(255,255,255,.97);color:var(--ink);border-radius:17px;
+  padding:14px 16px;box-shadow:var(--shadow);z-index:7;width:172px
 }
 .floating-card b{display:block;font-size:12px}
 .floating-card small{color:var(--muted);font-size:10px}
 .reward-float{right:0;top:70px}
 .reward-float strong{font-size:23px;color:var(--green);display:block;font-family:var(--font-head)}
-.order-float{left:16px;bottom:60px}
+.order-float{left:2px;bottom:36px}
 .status{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:10px;color:var(--green);font-weight:800}
 .status i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulseGreen 1.6s ease-in-out infinite}
 @keyframes pulseGreen{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* TRUST STRIP */
-.trust-strip{background:#fff;border-bottom:1px solid var(--line)}
+.trust-strip{
+  position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#EEF7FC 0%,#E6F3FA 50%,#EEF7FC 100%);
+  border-bottom:1px solid var(--line);
+}
+.trust-strip:before{
+  content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:radial-gradient(rgba(21,159,227,.16) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.trust-strip .container{position:relative;z-index:1}
 .trust-row{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap;padding:14px 0}
 .trust-copy{font-size:13px;color:#74879A;font-weight:800;letter-spacing:.01em}
 .trust-chips{display:flex;gap:10px;flex-wrap:wrap}
@@ -252,7 +262,19 @@ html[lang="hi"] .eyebrow{letter-spacing:0}
 /* PROBLEM */
 .problem{background:#fff}
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.problem-card{position:relative;overflow:hidden;padding:30px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#fff,#F8FBFD)}
+.problem-card{
+  position:relative;overflow:hidden;padding:30px;border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(180deg,#fff,#F8FBFD);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease;
+}
+.problem-card:hover{
+  transform:translateY(-9px);
+  border-color:transparent;
+  box-shadow:
+    0 6px 12px rgba(6,43,87,.07),
+    0 18px 32px rgba(6,43,87,.11),
+    0 40px 64px rgba(6,43,87,.15);
+}
 .problem-card:after{content:"";position:absolute;right:-30px;top:-35px;width:110px;height:110px;border-radius:50%;background:#EDF8FC}
 .problem-card h3{font-family:var(--font-head);font-weight:800;font-size:20px;margin-bottom:10px;position:relative}
 .problem-card p{font-size:14.5px;line-height:1.6;color:var(--muted);position:relative}
@@ -415,6 +437,9 @@ footer a:hover{color:#fff}
   .step:nth-child(3):after,.step:nth-child(6):after{display:none}
   .solution-image{min-height:340px}
 }
+@media(min-width:641px) and (max-width:1050px){
+  .problem-grid,.feature-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:720px){
   .container{width:min(100% - 28px,var(--max))}
   .nav{height:66px}.nav-cta .btn{display:none}
@@ -440,6 +465,12 @@ footer a:hover{color:#fff}
   .phone{right:80px}
   .steps{grid-template-columns:1fr}
   .cta-box{padding:44px 20px}
+  .nav{gap:8px}
+  .brand span{font-size:17px}
+  .brand small{font-size:8.5px}
+  .lang-current{padding:7px 9px;font-size:11px;gap:4px}
+  .lang-current svg{width:12px;height:12px}
+  .lang-menu{right:-8px;min-width:140px}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
