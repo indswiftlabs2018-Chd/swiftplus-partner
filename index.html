@@ -7,7 +7,7 @@
 <meta name="description" content="SwiftPlus+ is Ind-Swift's official partner app for ordering, invoice uploads, live order status and rewards — built for retailers, chemists and stockists.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -29,6 +29,9 @@
   --font-body:"Manrope",Arial,sans-serif;
   --font-head:"Plus Jakarta Sans","Manrope",Arial,sans-serif;
   --font-hi:"Noto Sans Devanagari","Manrope",Arial,sans-serif;
+  --font-ta:"Noto Sans Tamil","Manrope",Arial,sans-serif;
+  --font-ml:"Noto Sans Malayalam","Manrope",Arial,sans-serif;
+  --font-pa:"Noto Sans Gurmukhi","Manrope",Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -41,9 +44,21 @@ body{
   overflow-x:hidden;
 }
 html[lang="hi"] body{font-family:var(--font-hi);}
+html[lang="ta"] body{font-family:var(--font-ta);}
+html[lang="ml"] body{font-family:var(--font-ml);}
+html[lang="pa"] body{font-family:var(--font-pa);}
 html[lang="hi"] h1,html[lang="hi"] h2,html[lang="hi"] h3,html[lang="hi"] h4,
 html[lang="hi"] .section-title,html[lang="hi"] .btn,html[lang="hi"] .brand,
 html[lang="hi"] .eyebrow,html[lang="hi"] .kicker{font-family:var(--font-hi);}
+html[lang="ta"] h1,html[lang="ta"] h2,html[lang="ta"] h3,html[lang="ta"] h4,
+html[lang="ta"] .section-title,html[lang="ta"] .btn,html[lang="ta"] .brand,
+html[lang="ta"] .eyebrow,html[lang="ta"] .kicker{font-family:var(--font-ta);}
+html[lang="ml"] h1,html[lang="ml"] h2,html[lang="ml"] h3,html[lang="ml"] h4,
+html[lang="ml"] .section-title,html[lang="ml"] .btn,html[lang="ml"] .brand,
+html[lang="ml"] .eyebrow,html[lang="ml"] .kicker{font-family:var(--font-ml);}
+html[lang="pa"] h1,html[lang="pa"] h2,html[lang="pa"] h3,html[lang="pa"] h4,
+html[lang="pa"] .section-title,html[lang="pa"] .btn,html[lang="pa"] .brand,
+html[lang="pa"] .eyebrow,html[lang="pa"] .kicker{font-family:var(--font-pa);}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 ul{list-style:none}
@@ -63,9 +78,28 @@ header{
 .nav-cta{display:flex;align-items:center;gap:10px}
 .nav-phone{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:var(--navy);margin-right:2px}
 .nav-phone svg{width:15px;height:15px;color:var(--blue)}
-.lang-toggle{display:flex;background:#F1F6FA;border-radius:999px;padding:3px;border:1px solid var(--line)}
-.lang-btn{border:none;background:transparent;padding:7px 13px;border-radius:999px;font-family:var(--font-head);font-weight:800;font-size:11.5px;color:var(--muted);cursor:pointer;transition:.2s}
-.lang-btn.active{background:var(--navy);color:#fff}
+.lang-dropdown{position:relative}
+.lang-current{
+  display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:999px;
+  background:#F1F6FA;border:1px solid var(--line);font-family:var(--font-head);
+  font-weight:800;font-size:12.5px;color:var(--navy);cursor:pointer;transition:.2s
+}
+.lang-current:hover{background:#E7F1F7}
+.lang-current svg{width:14px;height:14px;color:var(--blue)}
+.lang-current .chev{width:10px;height:10px;color:var(--muted);transition:transform .2s}
+.lang-dropdown.open .lang-current .chev{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--line);
+  border-radius:14px;box-shadow:var(--shadow);padding:6px;min-width:150px;z-index:200;
+  display:none;
+}
+.lang-dropdown.open .lang-menu{display:block}
+.lang-menu button{
+  display:block;width:100%;text-align:left;padding:9px 12px;border-radius:9px;border:none;
+  background:transparent;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;
+}
+.lang-menu button:hover{background:#F1F6FA}
+.lang-menu button.active{background:var(--navy);color:#fff}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   padding:14px 22px;border-radius:12px;font-size:14.5px;font-weight:800;
@@ -437,9 +471,19 @@ footer a:hover{color:#fff}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2.1z"/></svg>
         <span>+91 90566 29609</span>
       </a>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="hi">हिं</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-current" id="langCurrentBtn" type="button" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span id="langCurrentLabel">EN</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-opt active" data-lang="en">English</button>
+          <button class="lang-opt" data-lang="hi">हिंदी</button>
+          <button class="lang-opt" data-lang="ta">தமிழ்</button>
+          <button class="lang-opt" data-lang="ml">മലയാളം</button>
+          <button class="lang-opt" data-lang="pa">ਪੰਜਾਬੀ</button>
+        </div>
       </div>
       <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener" data-i18n="nav_cta">Get the App</a>
     </div>
@@ -837,128 +881,130 @@ animateCount(document.getElementById('rewardPoints2'), 2450, 1400);
 
 /* EN / HI toggle */
 const translations = {
-  brand_sub:{en:"by Ind-Swift",hi:"Ind-Swift द्वारा"},
-  nav_why:{en:"Why SwiftPlus",hi:"क्यों SwiftPlus"},
-  nav_features:{en:"Features",hi:"खूबियां"},
-  nav_how:{en:"How It Works",hi:"कैसे काम करता है"},
-  nav_rewards:{en:"Rewards",hi:"रिवॉर्ड्स"},
-  nav_cta:{en:"Get the App",hi:"ऐप पाएं"},
+  brand_sub:{en:"by Ind-Swift",hi:"Ind-Swift द्वारा",ta:"Ind-Swift ஆல்",ml:"Ind-Swift-ന്റെ",pa:"Ind-Swift ਵੱਲੋਂ"},
+  nav_why:{en:"Why SwiftPlus",hi:"क्यों SwiftPlus",ta:"ஏன் SwiftPlus",ml:"എന്തുകൊണ്ട് SwiftPlus",pa:"SwiftPlus ਕਿਉਂ"},
+  nav_features:{en:"Features",hi:"खूबियां",ta:"அம்சங்கள்",ml:"ഫീച്ചറുകൾ",pa:"ਖ਼ਾਸੀਅਤਾਂ"},
+  nav_how:{en:"How It Works",hi:"कैसे काम करता है",ta:"இது எப்படி செயல்படுகிறது",ml:"ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു",pa:"ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ"},
+  nav_rewards:{en:"Rewards",hi:"रिवॉर्ड्स",ta:"ரிவார்டுகள்",ml:"റിവാർഡുകൾ",pa:"ਰਿਵਾਰਡ"},
+  nav_cta:{en:"Get the App",hi:"ऐप पाएं",ta:"ஆப்ஸை பெறுங்கள்",ml:"ആപ്പ് നേടൂ",pa:"ਐਪ ਪ੍ਰਾਪਤ ਕਰੋ"},
 
-  hero_kicker:{en:"SwiftPlus Partner App",hi:"SwiftPlus पार्टनर ऐप"},
-  hero_h1:{en:'Smarter pharma trade.<br><span>Every order counts.</span>',hi:'स्मार्ट फार्मा ट्रेड।<br><span>हर ऑर्डर मायने रखता है।</span>'},
-  hero_copy:{en:"A modern digital partner experience for Ind-Swift retailers, chemists and stockists. Order faster, track payments, upload invoices and turn eligible purchases into visible rewards.",hi:"Ind-Swift के रिटेलर, केमिस्ट और स्टॉकिस्ट के लिए एक आधुनिक डिजिटल पार्टनर अनुभव। तेज़ ऑर्डर करें, पेमेंट ट्रैक करें, इनवॉइस अपलोड करें और हर योग्य खरीद को दिखने वाले रिवॉर्ड में बदलें।"},
-  btn_play:{en:"Google Play",hi:"Google Play"},
-  btn_appstore_short:{en:"App Store",hi:"App Store"},
-  btn_how:{en:"See How It Works",hi:"जानें कैसे काम करता है"},
-  proof1:{en:"Order placement",hi:"ऑर्डर प्लेसमेंट"},
-  proof2_num:{en:"Live",hi:"लाइव"},
-  proof2:{en:"Order &amp; payment status",hi:"ऑर्डर व पेमेंट स्टेटस"},
-  proof3:{en:"Reward visibility",hi:"रिवॉर्ड पारदर्शिता"},
+  hero_kicker:{en:"SwiftPlus Partner App",hi:"SwiftPlus पार्टनर ऐप",ta:"SwiftPlus பார்ட்னர் ஆப்",ml:"SwiftPlus പാർട്ണർ ആപ്പ്",pa:"SwiftPlus ਪਾਰਟਨਰ ਐਪ"},
+  hero_h1:{en:'Smarter pharma trade.<br><span>Every order counts.</span>',hi:'स्मार्ट फार्मा ट्रेड।<br><span>हर ऑर्डर मायने रखता है।</span>',ta:'ஸ்மார்ட் மருந்து வர்த்தகம்.<br><span>ஒவ்வொரு ஆர்டரும் முக்கியம்.</span>',ml:'സ്മാർട്ട് ഫാർമ വ്യാപാരം.<br><span>ഓരോ ഓർഡറും പ്രധാനമാണ്.</span>',pa:'ਸਮਾਰਟ ਫਾਰਮਾ ਵਪਾਰ।<br><span>ਹਰ ਆਰਡਰ ਮਾਇਨੇ ਰੱਖਦਾ ਹੈ।</span>'},
+  hero_copy:{en:"A modern digital partner experience for Ind-Swift retailers, chemists and stockists. Order faster, track payments, upload invoices and turn eligible purchases into visible rewards.",hi:"Ind-Swift के रिटेलर, केमिस्ट और स्टॉकिस्ट के लिए एक आधुनिक डिजिटल पार्टनर अनुभव। तेज़ ऑर्डर करें, पेमेंट ट्रैक करें, इनवॉइस अपलोड करें और हर योग्य खरीद को दिखने वाले रिवॉर्ड में बदलें।",ta:"Ind-Swift சில்லறை விற்பனையாளர்கள், மருந்தாளர்கள் மற்றும் ஸ்டாக்கிஸ்ட்களுக்கான நவீன டிஜிட்டல் பார்ட்னர் அனுபவம். வேகமாக ஆர்டர் செய்யுங்கள், பேமெண்ட்களை கண்காணியுங்கள், இன்வாய்ஸ்களை பதிவேற்றுங்கள் மற்றும் தகுதியான கொள்முதல்களை காணக்கூடிய ரிவார்டுகளாக மாற்றுங்கள்.",ml:"Ind-Swift റീട്ടെയിലർമാർ, കെമിസ്റ്റുകൾ, സ്റ്റോക്കിസ്റ്റുകൾ എന്നിവർക്കായുള്ള ആധുനിക ഡിജിറ്റൽ പാർട്ണർ അനുഭവം. വേഗത്തിൽ ഓർഡർ ചെയ്യുക, പേയ്‌മെന്റുകൾ ട്രാക്ക് ചെയ്യുക, ഇൻവോയ്സുകൾ അപ്‌ലോഡ് ചെയ്യുക, യോഗ്യമായ വാങ്ങലുകൾ ദൃശ്യമായ റിവാർഡുകളാക്കി മാറ്റുക.",pa:"Ind-Swift ਦੇ ਰਿਟੇਲਰਾਂ, ਕੈਮਿਸਟਾਂ ਅਤੇ ਸਟਾਕਿਸਟਾਂ ਲਈ ਇੱਕ ਆਧੁਨਿਕ ਡਿਜੀਟਲ ਪਾਰਟਨਰ ਅਨੁਭਵ। ਤੇਜ਼ੀ ਨਾਲ ਆਰਡਰ ਕਰੋ, ਪੇਮੈਂਟ ਟਰੈਕ ਕਰੋ, ਇਨਵੌਇਸ ਅੱਪਲੋਡ ਕਰੋ ਅਤੇ ਯੋਗ ਖਰੀਦਾਰੀ ਨੂੰ ਦਿਖਣਯੋਗ ਰਿਵਾਰਡਾਂ ਵਿੱਚ ਬਦਲੋ।"},
+  btn_play:{en:"Google Play",hi:"Google Play",ta:"Google Play",ml:"Google Play",pa:"Google Play"},
+  btn_appstore_short:{en:"App Store",hi:"App Store",ta:"App Store",ml:"App Store",pa:"App Store"},
+  btn_how:{en:"See How It Works",hi:"जानें कैसे काम करता है",ta:"இது எப்படி செயல்படுகிறது எனப் பாருங்கள்",ml:"ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നുവെന്ന് കാണുക",pa:"ਦੇਖੋ ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ"},
+  proof1:{en:"Order placement",hi:"ऑर्डर प्लेसमेंट",ta:"ஆர்டர் செய்தல்",ml:"ഓർഡർ പ്ലേസ്‌മെന്റ്",pa:"ਆਰਡਰ ਪਲੇਸਮੈਂਟ"},
+  proof2_num:{en:"Live",hi:"लाइव",ta:"லைவ்",ml:"ലൈവ്",pa:"ਲਾਈਵ"},
+  proof2:{en:"Order &amp; payment status",hi:"ऑर्डर व पेमेंट स्टेटस",ta:"ஆர்டர் & பேமெண்ட் நிலை",ml:"ഓർഡർ & പേയ്‌മെന്റ് സ്റ്റാറ്റസ്",pa:"ਆਰਡਰ ਅਤੇ ਪੇਮੈਂਟ ਸਟੇਟਸ"},
+  proof3:{en:"Reward visibility",hi:"रिवॉर्ड पारदर्शिता",ta:"ரிவார்ட் தெளிவு",ml:"റിവാർഡ് ദൃശ്യപരത",pa:"ਰਿਵਾਰਡ ਪਾਰਦਰਸ਼ਤਾ"},
 
-  reward_wallet_label:{en:"REWARD WALLET",hi:"रिवॉर्ड वॉलेट"},
-  updated_live:{en:"Updated live",hi:"लाइव अपडेट"},
-  order_label:{en:"ORDER #114",hi:"ऑर्डर #114"},
-  dispatch_confirmed:{en:"Dispatch confirmed",hi:"डिस्पैच कन्फर्म"},
-  ready_to_ship:{en:"Ready to ship",hi:"भेजने के लिए तैयार"},
-  phone_tag_b:{en:"One connected partner journey",hi:"एक जुड़ी हुई पार्टनर यात्रा"},
-  phone_tag_small:{en:"Order → Invoice → Status → Points → Reward",hi:"ऑर्डर → इनवॉइस → स्टेटस → पॉइंट्स → रिवॉर्ड"},
+  reward_wallet_label:{en:"REWARD WALLET",hi:"रिवॉर्ड वॉलेट",ta:"ரிவார்ட் வாலட்",ml:"റിവാർഡ് വാലറ്റ്",pa:"ਰਿਵਾਰਡ ਵਾਲਿਟ"},
+  updated_live:{en:"Updated live",hi:"लाइव अपडेट",ta:"லைவ் அப்டேட்",ml:"ലൈവ് അപ്‌ഡേറ്റ്",pa:"ਲਾਈਵ ਅੱਪਡੇਟ"},
+  order_label:{en:"ORDER #114",hi:"ऑर्डर #114",ta:"ஆர்டர் #114",ml:"ഓർഡർ #114",pa:"ਆਰਡਰ #114"},
+  dispatch_confirmed:{en:"Dispatch confirmed",hi:"डिस्पैच कन्फर्म",ta:"அனுப்புதல் உறுதி",ml:"ഡിസ്‌പാച്ച് സ്ഥിരീകരിച്ചു",pa:"ਡਿਸਪੈਚ ਕਨਫਰਮ"},
+  ready_to_ship:{en:"Ready to ship",hi:"भेजने के लिए तैयार",ta:"அனுப்ப தயார்",ml:"അയക്കാൻ തയ്യാർ",pa:"ਭੇਜਣ ਲਈ ਤਿਆਰ"},
+  phone_tag_b:{en:"One connected partner journey",hi:"एक जुड़ी हुई पार्टनर यात्रा",ta:"ஒரே இணைந்த பார்ட்னர் பயணம்",ml:"ഒരു ബന്ധിത പാർട്ണർ യാത്ര",pa:"ਇੱਕ ਜੁੜੀ ਹੋਈ ਪਾਰਟਨਰ ਯਾਤਰਾ"},
+  phone_tag_small:{en:"Order → Invoice → Status → Points → Reward",hi:"ऑर्डर → इनवॉइस → स्टेटस → पॉइंट्स → रिवॉर्ड",ta:"ஆர்டர் → இன்வாய்ஸ் → நிலை → பாயிண்ட்ஸ் → ரிவார்ட்",ml:"ഓർഡർ → ഇൻവോയ്സ് → സ്റ്റാറ്റസ് → പോയിന്റുകൾ → റിവാർഡ്",pa:"ਆਰਡਰ → ਇਨਵੌਇਸ → ਸਟੇਟਸ → ਪੁਆਇੰਟਸ → ਰਿਵਾਰਡ"},
 
-  trust_strip:{en:"BUILT FOR IND-SWIFT'S REGISTERED TRADE PARTNER NETWORK",hi:"Ind-Swift के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए बनाया गया"},
-  chip1:{en:"Retailers",hi:"रिटेलर"},
-  chip2:{en:"Chemists",hi:"केमिस्ट"},
-  chip3:{en:"Stockists",hi:"स्टॉकिस्ट"},
-  chip4:{en:"Pharma Trade",hi:"फार्मा ट्रेड"},
+  trust_strip:{en:"BUILT FOR IND-SWIFT'S REGISTERED TRADE PARTNER NETWORK",hi:"Ind-Swift के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए बनाया गया",ta:"IND-SWIFT இன் பதிவு செய்யப்பட்ட வர்த்தக பார்ட்னர் நெட்வொர்க்கிற்காக உருவாக்கப்பட்டது",ml:"IND-SWIFT-ന്റെ രജിസ്റ്റർ ചെയ്ത ട്രേഡ് പാർട്ണർ നെറ്റ്‌വർക്കിനായി നിർമ്മിച്ചത്",pa:"IND-SWIFT ਦੇ ਰਜਿਸਟਰਡ ਟਰੇਡ ਪਾਰਟਨਰ ਨੈੱਟਵਰਕ ਲਈ ਬਣਾਇਆ ਗਿਆ"},
+  chip1:{en:"Retailers",hi:"रिटेलर",ta:"சில்லறை விற்பனையாளர்கள்",ml:"റീട്ടെയിലർമാർ",pa:"ਰਿਟੇਲਰ"},
+  chip2:{en:"Chemists",hi:"केमिस्ट",ta:"மருந்தாளர்கள்",ml:"കെമിസ്റ്റുകൾ",pa:"ਕੈਮਿਸਟ"},
+  chip3:{en:"Stockists",hi:"स्टॉकिस्ट",ta:"ஸ்டாக்கிஸ்டுகள்",ml:"സ്റ്റോക്കിസ്റ്റുകൾ",pa:"ਸਟਾਕਿਸਟ"},
+  chip4:{en:"Pharma Trade",hi:"फार्मा ट्रेड",ta:"மருந்து வர்த்தகம்",ml:"ഫാർമ വ്യാപാരം",pa:"ਫਾਰਮਾ ਵਪਾਰ"},
 
-  why_eyebrow:{en:"The old pharma trade experience",hi:"पुराना फार्मा ट्रेड अनुभव"},
-  why_h2:{en:"Less chasing.<br>More control.",hi:"कम भागदौड़।<br>ज़्यादा नियंत्रण।"},
-  why_p:{en:"SwiftPlus closes the everyday gaps between placing an order, knowing its status and understanding what you have earned.",hi:"SwiftPlus ऑर्डर देने, उसका स्टेटस जानने और आपने क्या कमाया यह समझने के बीच की रोज़ की कमियों को दूर करता है।"},
-  p1_h:{en:"Manual, repetitive ordering",hi:"बार-बार मैन्युअल ऑर्डर"},
-  p1_p:{en:"Repeated calls, product names, quantities and confirmation follow-ups slow down a busy pharmacy.",hi:"बार-बार कॉल, प्रोडक्ट के नाम, मात्रा और कन्फर्मेशन फॉलो-अप — यह व्यस्त दुकान को धीमा कर देता है।"},
-  p2_h:{en:"Schemes can get missed",hi:"स्कीम्स छूट सकती हैं"},
-  p2_p:{en:"Reward slabs and seasonal offers are difficult to follow when there is no single digital place to track them.",hi:"रिवॉर्ड स्लैब और सीज़नल ऑफर ट्रैक करना मुश्किल है जब उन्हें देखने की कोई एक डिजिटल जगह नहीं होती।"},
-  p3_h:{en:"Status is often unclear",hi:"स्टेटस अक्सर साफ नहीं होता"},
-  p3_p:{en:"Know whether an order is confirmed, dispatched or whether payment has been recorded without another call.",hi:"बिना दोबारा कॉल किए जानें कि ऑर्डर कन्फर्म हुआ, डिस्पैच हुआ या पेमेंट दर्ज हुआ।"},
+  why_eyebrow:{en:"The old pharma trade experience",hi:"पुराना फार्मा ट्रेड अनुभव",ta:"பழைய மருந்து வர்த்தக அனுபவம்",ml:"പഴയ ഫാർമ വ്യാപാര അനുഭവം",pa:"ਪੁਰਾਣਾ ਫਾਰਮਾ ਵਪਾਰ ਅਨੁਭਵ"},
+  why_h2:{en:"Less chasing.<br>More control.",hi:"कम भागदौड़।<br>ज़्यादा नियंत्रण।",ta:"குறைவான ஓட்டம்.<br>அதிக கட்டுப்பாடு.",ml:"കുറഞ്ഞ പിന്തുടരൽ.<br>കൂടുതൽ നിയന്ത്രണം.",pa:"ਘੱਟ ਭੱਜ-ਦੌੜ।<br>ਵੱਧ ਕੰਟਰੋਲ।"},
+  why_p:{en:"SwiftPlus closes the everyday gaps between placing an order, knowing its status and understanding what you have earned.",hi:"SwiftPlus ऑर्डर देने, उसका स्टेटस जानने और आपने क्या कमाया यह समझने के बीच की रोज़ की कमियों को दूर करता है।",ta:"ஆர்டர் செய்வது, அதன் நிலையை அறிவது மற்றும் நீங்கள் என்ன சம்பாதித்தீர்கள் என்பதைப் புரிந்துகொள்வது ஆகியவற்றுக்கு இடையேயான தினசரி இடைவெளிகளை SwiftPlus மூடுகிறது.",ml:"ഓർഡർ ചെയ്യുന്നതും അതിന്റെ സ്റ്റാറ്റസ് അറിയുന്നതും നിങ്ങൾ എന്ത് നേടിയെന്ന് മനസ്സിലാക്കുന്നതും തമ്മിലുള്ള ദൈനംദിന വിടവുകൾ SwiftPlus അടയ്ക്കുന്നു.",pa:"ਆਰਡਰ ਦੇਣ, ਉਸਦੀ ਸਟੇਟਸ ਜਾਣਨ ਅਤੇ ਤੁਸੀਂ ਕੀ ਕਮਾਇਆ ਇਹ ਸਮਝਣ ਦੇ ਵਿਚਕਾਰ ਦੀ ਰੋਜ਼ਾਨਾ ਖੱਪੇ ਨੂੰ SwiftPlus ਦੂਰ ਕਰਦਾ ਹੈ।"},
+  p1_h:{en:"Manual, repetitive ordering",hi:"बार-बार मैन्युअल ऑर्डर",ta:"கைமுறை, மீண்டும் மீண்டும் ஆர்டர் செய்தல்",ml:"മാനുവൽ, ആവർത്തന ഓർഡറിംഗ്",pa:"ਮੈਨੁਅਲ, ਵਾਰ-ਵਾਰ ਆਰਡਰਿੰਗ"},
+  p1_p:{en:"Repeated calls, product names, quantities and confirmation follow-ups slow down a busy pharmacy.",hi:"बार-बार कॉल, प्रोडक्ट के नाम, मात्रा और कन्फर्मेशन फॉलो-अप — यह व्यस्त दुकान को धीमा कर देता है।",ta:"மீண்டும் மீண்டும் அழைப்புகள், தயாரிப்பு பெயர்கள், அளவுகள் மற்றும் உறுதிப்படுத்தல் பின்தொடர்தல்கள் பரபரப்பான மருந்தகத்தை மெதுவாக்குகின்றன.",ml:"ആവർത്തിച്ചുള്ള കോളുകൾ, ഉൽപ്പന്ന പേരുകൾ, അളവുകൾ, സ്ഥിരീകരണ ഫോളോ-അപ്പുകൾ എന്നിവ തിരക്കുള്ള ഫാർമസിയെ മന്ദഗതിയിലാക്കുന്നു.",pa:"ਵਾਰ-ਵਾਰ ਕਾਲਾਂ, ਪ੍ਰੋਡਕਟ ਦੇ ਨਾਮ, ਮਾਤਰਾ ਅਤੇ ਕਨਫਰਮੇਸ਼ਨ ਫਾਲੋ-ਅੱਪ ਇੱਕ ਵਿਅਸਤ ਦੁਕਾਨ ਨੂੰ ਹੌਲੀ ਕਰ ਦਿੰਦੇ ਹਨ।"},
+  p2_h:{en:"Schemes can get missed",hi:"स्कीम्स छूट सकती हैं",ta:"ஸ்கீம்கள் தவறவிடப்படலாம்",ml:"സ്കീമുകൾ നഷ്ടമായേക്കാം",pa:"ਸਕੀਮਾਂ ਖੁੰਝ ਸਕਦੀਆਂ ਹਨ"},
+  p2_p:{en:"Reward slabs and seasonal offers are difficult to follow when there is no single digital place to track them.",hi:"रिवॉर्ड स्लैब और सीज़नल ऑफर ट्रैक करना मुश्किल है जब उन्हें देखने की कोई एक डिजिटल जगह नहीं होती।",ta:"ரிவார்ட் அடுக்குகள் மற்றும் பருவகால சலுகைகளை கண்காணிக்க ஒரே டிஜிட்டல் இடம் இல்லாதபோது பின்பற்றுவது கடினம்.",ml:"ട്രാക്ക് ചെയ്യാൻ ഒരു ഡിജിറ്റൽ ഇടം ഇല്ലാത്തപ്പോൾ റിവാർഡ് സ്ലാബുകളും സീസണൽ ഓഫറുകളും പിന്തുടരാൻ ബുദ്ധിമുട്ടാണ്.",pa:"ਜਦੋਂ ਟਰੈਕ ਕਰਨ ਲਈ ਇੱਕ ਵੀ ਡਿਜੀਟਲ ਥਾਂ ਨਹੀਂ ਹੁੰਦੀ ਤਾਂ ਰਿਵਾਰਡ ਸਲੈਬ ਅਤੇ ਸੀਜ਼ਨਲ ਆਫਰਾਂ ਦਾ ਪਾਲਣ ਕਰਨਾ ਔਖਾ ਹੁੰਦਾ ਹੈ।"},
+  p3_h:{en:"Status is often unclear",hi:"स्टेटस अक्सर साफ नहीं होता",ta:"நிலை பெரும்பாலும் தெளிவற்றது",ml:"സ്റ്റാറ്റസ് പലപ്പോഴും വ്യക്തമല്ല",pa:"ਸਟੇਟਸ ਅਕਸਰ ਸਪੱਸ਼ਟ ਨਹੀਂ ਹੁੰਦੀ"},
+  p3_p:{en:"Know whether an order is confirmed, dispatched or whether payment has been recorded without another call.",hi:"बिना दोबारा कॉल किए जानें कि ऑर्डर कन्फर्म हुआ, डिस्पैच हुआ या पेमेंट दर्ज हुआ।",ta:"மீண்டும் அழைக்காமல் ஆர்டர் உறுதி செய்யப்பட்டதா, அனுப்பப்பட்டதா அல்லது பேமெண்ட் பதிவு செய்யப்பட்டதா என்பதை அறியுங்கள்.",ml:"മറ്റൊരു കോൾ ചെയ്യാതെ ഓർഡർ സ്ഥിരീകരിച്ചോ, ഡിസ്‌പാച്ച് ചെയ്തോ അല്ലെങ്കിൽ പേയ്‌മെന്റ് രേഖപ്പെടുത്തിയോ എന്ന് അറിയുക.",pa:"ਬਿਨਾਂ ਦੁਬਾਰਾ ਕਾਲ ਕੀਤੇ ਜਾਣੋ ਕਿ ਆਰਡਰ ਕਨਫਰਮ ਹੋਇਆ, ਡਿਸਪੈਚ ਹੋਇਆ ਜਾਂ ਪੇਮੈਂਟ ਦਰਜ ਹੋਈ।"},
 
-  sol_eyebrow:{en:"The SwiftPlus difference",hi:"SwiftPlus का फर्क"},
-  sol_h2:{en:"One app.<br>One source of truth.",hi:"एक ऐप।<br>एक ही सच्चाई का स्रोत।"},
-  sol_p:{en:"From the first tap to the final reward, the journey becomes visible, trackable and easier to manage.",hi:"पहले टैप से लेकर आखिरी रिवॉर्ड तक, पूरी यात्रा दिखने योग्य, ट्रैक करने योग्य और मैनेज करने में आसान हो जाती है।"},
-  sol_img_b:{en:"Digital pharma partnering, redesigned.",hi:"डिजिटल फार्मा पार्टनरशिप, नए सिरे से।"},
-  sol_img_span:{en:"A cleaner connection between Ind-Swift and the trade partner.",hi:"Ind-Swift और ट्रेड पार्टनर के बीच एक साफ़ जुड़ाव।"},
-  sol1_h:{en:"Order directly",hi:"सीधे ऑर्डर करें"},
-  sol1_p:{en:"Place orders straight to Ind-Swift or continue through your regular sales representative.",hi:"Ind-Swift को सीधे ऑर्डर दें या अपने सेल्स रिप्रेजेंटेटिव के ज़रिए जारी रखें।"},
-  sol2_h:{en:"Upload invoices",hi:"इनवॉइस अपलोड करें"},
-  sol2_p:{en:"Capture eligible purchase invoices from your phone and keep the process digital.",hi:"अपने फोन से योग्य खरीद इनवॉइस कैप्चर करें और पूरी प्रक्रिया डिजिटल रखें।"},
-  sol3_h:{en:"Track live status",hi:"लाइव स्टेटस ट्रैक करें"},
-  sol3_p:{en:"See order and payment progress as the status changes.",hi:"स्टेटस बदलते ही ऑर्डर और पेमेंट की प्रगति देखें।"},
+  sol_eyebrow:{en:"The SwiftPlus difference",hi:"SwiftPlus का फर्क",ta:"SwiftPlus வேறுபாடு",ml:"SwiftPlus വ്യത്യാസം",pa:"SwiftPlus ਦਾ ਫਰਕ"},
+  sol_h2:{en:"One app.<br>One source of truth.",hi:"एक ऐप।<br>एक ही सच्चाई का स्रोत।",ta:"ஒரே ஆப்.<br>ஒரே உண்மையின் ஆதாரம்.",ml:"ഒരു ആപ്പ്.<br>ഒരു സത്യത്തിന്റെ ഉറവിടം.",pa:"ਇੱਕ ਐਪ।<br>ਸੱਚਾਈ ਦਾ ਇੱਕ ਸਰੋਤ।"},
+  sol_p:{en:"From the first tap to the final reward, the journey becomes visible, trackable and easier to manage.",hi:"पहले टैप से लेकर आखिरी रिवॉर्ड तक, पूरी यात्रा दिखने योग्य, ट्रैक करने योग्य और मैनेज करने में आसान हो जाती है।",ta:"முதல் தட்டல் முதல் இறுதி ரிவார்ட் வரை, பயணம் காணக்கூடியதாகவும், கண்காணிக்கக்கூடியதாகவும், நிர்வகிக்க எளிதாகவும் மாறுகிறது.",ml:"ആദ്യ ടാപ്പ് മുതൽ അവസാന റിവാർഡ് വരെ, യാത്ര ദൃശ്യവും ട്രാക്ക് ചെയ്യാവുന്നതും കൈകാര്യം ചെയ്യാൻ എളുപ്പവുമാകുന്നു.",pa:"ਪਹਿਲੇ ਟੈਪ ਤੋਂ ਲੈ ਕੇ ਅੰਤਿਮ ਰਿਵਾਰਡ ਤੱਕ, ਸਫ਼ਰ ਦਿਖਣਯੋਗ, ਟਰੈਕ ਕਰਨਯੋਗ ਅਤੇ ਸੰਭਾਲਣ ਵਿੱਚ ਆਸਾਨ ਬਣ ਜਾਂਦਾ ਹੈ।"},
+  sol_img_b:{en:"Digital pharma partnering, redesigned.",hi:"डिजिटल फार्मा पार्टनरशिप, नए सिरे से।",ta:"டிஜிட்டல் மருந்து பார்ட்னரிங், மறுவடிவமைக்கப்பட்டது.",ml:"ഡിജിറ്റൽ ഫാർമ പാർട്ണറിംഗ്, പുനർരൂപകൽപ്പന ചെയ്തത്.",pa:"ਡਿਜੀਟਲ ਫਾਰਮਾ ਪਾਰਟਨਰਿੰਗ, ਨਵੇਂ ਸਿਰੇ ਤੋਂ।"},
+  sol_img_span:{en:"A cleaner connection between Ind-Swift and the trade partner.",hi:"Ind-Swift और ट्रेड पार्टनर के बीच एक साफ़ जुड़ाव।",ta:"Ind-Swift மற்றும் வர்த்தக பார்ட்னருக்கு இடையேயான தூய்மையான தொடர்பு.",ml:"Ind-Swift-ഉം ട്രേഡ് പാർട്ണറും തമ്മിലുള്ള വൃത്തിയുള്ള ബന്ധം.",pa:"Ind-Swift ਅਤੇ ਟਰੇਡ ਪਾਰਟਨਰ ਵਿਚਕਾਰ ਇੱਕ ਸਾਫ਼ ਸੰਪਰਕ।"},
+  sol1_h:{en:"Order directly",hi:"सीधे ऑर्डर करें",ta:"நேரடியாக ஆர்டர் செய்யுங்கள்",ml:"നേരിട്ട് ഓർഡർ ചെയ്യുക",pa:"ਸਿੱਧਾ ਆਰਡਰ ਕਰੋ"},
+  sol1_p:{en:"Place orders straight to Ind-Swift or continue through your regular sales representative.",hi:"Ind-Swift को सीधे ऑर्डर दें या अपने सेल्स रिप्रेजेंटेटिव के ज़रिए जारी रखें।",ta:"Ind-Swift க்கு நேரடியாக ஆர்டர்களை வைக்கவும் அல்லது உங்கள் வழக்கமான விற்பனை பிரதிநிதி மூலம் தொடரவும்.",ml:"Ind-Swift-ലേക്ക് നേരിട്ട് ഓർഡറുകൾ നൽകുക അല്ലെങ്കിൽ നിങ്ങളുടെ പതിവ് സെയിൽസ് പ്രതിനിധി മുഖേന തുടരുക.",pa:"Ind-Swift ਨੂੰ ਸਿੱਧਾ ਆਰਡਰ ਦਿਓ ਜਾਂ ਆਪਣੇ ਨਿਯਮਤ ਸੇਲਜ਼ ਪ੍ਰਤੀਨਿਧੀ ਰਾਹੀਂ ਜਾਰੀ ਰੱਖੋ।"},
+  sol2_h:{en:"Upload invoices",hi:"इनवॉइस अपलोड करें",ta:"இன்வாய்ஸ்களை பதிவேற்றவும்",ml:"ഇൻവോയ്സുകൾ അപ്‌ലോഡ് ചെയ്യുക",pa:"ਇਨਵੌਇਸ ਅੱਪਲੋਡ ਕਰੋ"},
+  sol2_p:{en:"Capture eligible purchase invoices from your phone and keep the process digital.",hi:"अपने फोन से योग्य खरीद इनवॉइस कैप्चर करें और पूरी प्रक्रिया डिजिटल रखें।",ta:"உங்கள் தொலைபேசியில் இருந்து தகுதியான கொள்முதல் இன்வாய்ஸ்களை படம் எடுத்து செயல்முறையை டிஜிட்டலாக வைத்திருங்கள்.",ml:"നിങ്ങളുടെ ഫോണിൽ നിന്ന് യോഗ്യമായ വാങ്ങൽ ഇൻവോയ്സുകൾ ക്യാപ്ചർ ചെയ്ത് പ്രക്രിയ ഡിജിറ്റലായി നിലനിർത്തുക.",pa:"ਆਪਣੇ ਫੋਨ ਤੋਂ ਯੋਗ ਖਰੀਦ ਇਨਵੌਇਸ ਕੈਪਚਰ ਕਰੋ ਅਤੇ ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਡਿਜੀਟਲ ਰੱਖੋ।"},
+  sol3_h:{en:"Track live status",hi:"लाइव स्टेटस ट्रैक करें",ta:"லைவ் நிலையை கண்காணிக்கவும்",ml:"ലൈവ് സ്റ്റാറ്റസ് ട്രാക്ക് ചെയ്യുക",pa:"ਲਾਈਵ ਸਟੇਟਸ ਟਰੈਕ ਕਰੋ"},
+  sol3_p:{en:"See order and payment progress as the status changes.",hi:"स्टेटस बदलते ही ऑर्डर और पेमेंट की प्रगति देखें।",ta:"நிலை மாறும்போது ஆர்டர் மற்றும் பேமெண்ட் முன்னேற்றத்தைப் பார்க்கவும்.",ml:"സ്റ്റാറ്റസ് മാറുന്നതനുസരിച്ച് ഓർഡറിന്റെയും പേയ്‌മെന്റിന്റെയും പുരോഗതി കാണുക.",pa:"ਸਟੇਟਸ ਬਦਲਣ ਦੇ ਨਾਲ ਆਰਡਰ ਅਤੇ ਪੇਮੈਂਟ ਦੀ ਪ੍ਰਗਤੀ ਵੇਖੋ।"},
 
-  feat_eyebrow:{en:"What you get",hi:"आपको क्या मिलता है"},
-  feat_h2:{en:"Everything your trade relationship needs.",hi:"आपके ट्रेड रिश्ते को जो कुछ चाहिए, वो सब।"},
-  feat_p:{en:"A focused partner app built around ordering, transparency and rewards.",hi:"ऑर्डरिंग, पारदर्शिता और रिवॉर्ड्स के इर्द-गिर्द बना एक फोकस्ड पार्टनर ऐप।"},
-  f1_h:{en:"Order Directly",hi:"सीधे ऑर्डर करें"},
-  f1_p:{en:"Place orders directly in the app or continue with your regular sales representative.",hi:"ऐप में सीधे ऑर्डर करें या अपने सेल्स रिप्रेजेंटेटिव के साथ जारी रखें।"},
-  f2_h:{en:"Upload Invoices",hi:"इनवॉइस अपलोड करें"},
-  f2_p:{en:"Snap and upload eligible purchase invoices without paperwork and follow-up calls.",hi:"बिना कागज़ी काम और फॉलो-अप कॉल के योग्य खरीद इनवॉइस अपलोड करें।"},
-  f3_h:{en:"Live Order &amp; Payment Status",hi:"लाइव ऑर्डर व पेमेंट स्टेटस"},
-  f3_p:{en:"Know exactly where your order and payment stand as the status changes.",hi:"स्टेटस बदलते ही जानें आपका ऑर्डर और पेमेंट कहाँ तक पहुंचा।"},
-  f4_h:{en:"Track Reward Points",hi:"रिवॉर्ड पॉइंट्स ट्रैक करें"},
-  f4_p:{en:"Watch your eligible reward points and balance grow in real time.",hi:"अपने योग्य रिवॉर्ड पॉइंट्स और बैलेंस को रियल टाइम में बढ़ता देखें।"},
-  f5_h:{en:"Know Your Tier",hi:"अपना टियर जानें"},
-  f5_p:{en:"See your reward tier and the next milestone that can unlock additional benefits.",hi:"अपना रिवॉर्ड टियर और अगला माइलस्टोन देखें जो अतिरिक्त लाभ अनलॉक कर सकता है।"},
-  f6_h:{en:"Redeem In-App",hi:"ऐप में ही रिडीम करें"},
-  f6_p:{en:"Choose gifts or a direct bank transfer and redeem directly from your phone.",hi:"गिफ्ट या सीधा बैंक ट्रांसफर चुनें और अपने फोन से ही रिडीम करें।"},
+  feat_eyebrow:{en:"What you get",hi:"आपको क्या मिलता है",ta:"நீங்கள் பெறுவது என்ன",ml:"നിങ്ങൾക്ക് ലഭിക്കുന്നത്",pa:"ਤੁਹਾਨੂੰ ਕੀ ਮਿਲਦਾ ਹੈ"},
+  feat_h2:{en:"Everything your trade relationship needs.",hi:"आपके ट्रेड रिश्ते को जो कुछ चाहिए, वो सब।",ta:"உங்கள் வர்த்தக உறவுக்கு தேவையான அனைத்தும்.",ml:"നിങ്ങളുടെ ട്രേഡ് ബന്ധത്തിന് ആവശ്യമായതെല്ലാം.",pa:"ਤੁਹਾਡੇ ਵਪਾਰਕ ਰਿਸ਼ਤੇ ਨੂੰ ਲੋੜੀਂਦੀ ਹਰ ਚੀਜ਼।"},
+  feat_p:{en:"A focused partner app built around ordering, transparency and rewards.",hi:"ऑर्डरिंग, पारदर्शिता और रिवॉर्ड्स के इर्द-गिर्द बना एक फोकस्ड पार्टनर ऐप।",ta:"ஆர்டரிங், வெளிப்படைத்தன்மை மற்றும் ரிவார்டுகளை மையமாகக் கொண்டு உருவாக்கப்பட்ட ஒரு கவனம் செலுத்தும் பார்ட்னர் ஆப்.",ml:"ഓർഡറിംഗ്, സുതാര്യത, റിവാർഡുകൾ എന്നിവയെ ചുറ്റിപ്പറ്റി നിർമ്മിച്ച ഒരു ഫോക്കസ്ഡ് പാർട്ണർ ആപ്പ്.",pa:"ਆਰਡਰਿੰਗ, ਪਾਰਦਰਸ਼ਤਾ ਅਤੇ ਰਿਵਾਰਡਾਂ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਬਣਾਈ ਗਈ ਇੱਕ ਫੋਕਸਡ ਪਾਰਟਨਰ ਐਪ।"},
+  f1_h:{en:"Order Directly",hi:"सीधे ऑर्डर करें",ta:"நேரடியாக ஆர்டர் செய்யுங்கள்",ml:"നേരിട്ട് ഓർഡർ ചെയ്യുക",pa:"ਸਿੱਧਾ ਆਰਡਰ ਕਰੋ"},
+  f1_p:{en:"Place orders directly in the app or continue with your regular sales representative.",hi:"ऐप में सीधे ऑर्डर करें या अपने सेल्स रिप्रेजेंटेटिव के साथ जारी रखें।",ta:"ஆப்பில் நேரடியாக ஆர்டர்களை வைக்கவும் அல்லது உங்கள் வழக்கமான விற்பனை பிரதிநிதியுடன் தொடரவும்.",ml:"ആപ്പിൽ നേരിട്ട് ഓർഡറുകൾ നൽകുക അല്ലെങ്കിൽ നിങ്ങളുടെ പതിവ് സെയിൽസ് പ്രതിനിധിയുമായി തുടരുക.",pa:"ਐਪ ਵਿੱਚ ਸਿੱਧਾ ਆਰਡਰ ਦਿਓ ਜਾਂ ਆਪਣੇ ਨਿਯਮਤ ਸੇਲਜ਼ ਪ੍ਰਤੀਨਿਧੀ ਨਾਲ ਜਾਰੀ ਰੱਖੋ।"},
+  f2_h:{en:"Upload Invoices",hi:"इनवॉइस अपलोड करें",ta:"இன்வாய்ஸ்களை பதிவேற்றவும்",ml:"ഇൻവോയ്സുകൾ അപ്‌ലോഡ് ചെയ്യുക",pa:"ਇਨਵੌਇਸ ਅੱਪਲੋਡ ਕਰੋ"},
+  f2_p:{en:"Snap and upload eligible purchase invoices without paperwork and follow-up calls.",hi:"बिना कागज़ी काम और फॉलो-अप कॉल के योग्य खरीद इनवॉइस अपलोड करें।",ta:"காகித வேலை மற்றும் பின்தொடர்தல் அழைப்புகள் இல்லாமல் தகுதியான கொள்முதல் இன்வாய்ஸ்களை படம் எடுத்து பதிவேற்றவும்.",ml:"പേപ്പർവർക്കും ഫോളോ-അപ്പ് കോളുകളും ഇല്ലാതെ യോഗ്യമായ വാങ്ങൽ ഇൻവോയ്സുകൾ എടുത്ത് അപ്‌ലോഡ് ചെയ്യുക.",pa:"ਕਾਗਜ਼ੀ ਕਾਰਵਾਈ ਅਤੇ ਫਾਲੋ-ਅੱਪ ਕਾਲਾਂ ਤੋਂ ਬਿਨਾਂ ਯੋਗ ਖਰੀਦ ਇਨਵੌਇਸ ਖਿੱਚੋ ਅਤੇ ਅੱਪਲੋਡ ਕਰੋ।"},
+  f3_h:{en:"Live Order &amp; Payment Status",hi:"लाइव ऑर्डर व पेमेंट स्टेटस",ta:"லைவ் ஆர்டர் & பேமெண்ட் நிலை",ml:"ലൈവ് ഓർഡർ & പേയ്‌മെന്റ് സ്റ്റാറ്റസ്",pa:"ਲਾਈਵ ਆਰਡਰ ਅਤੇ ਪੇਮੈਂਟ ਸਟੇਟਸ"},
+  f3_p:{en:"Know exactly where your order and payment stand as the status changes.",hi:"स्टेटस बदलते ही जानें आपका ऑर्डर और पेमेंट कहाँ तक पहुंचा।",ta:"நிலை மாறும்போது உங்கள் ஆர்டர் மற்றும் பேமெண்ட் எங்கு உள்ளது என்பதை சரியாக அறியுங்கள்.",ml:"സ്റ്റാറ്റസ് മാറുന്നതനുസരിച്ച് നിങ്ങളുടെ ഓർഡറും പേയ്‌മെന്റും എവിടെയാണെന്ന് കൃത്യമായി അറിയുക.",pa:"ਸਟੇਟਸ ਬਦਲਣ ਦੇ ਨਾਲ ਸਹੀ ਢੰਗ ਨਾਲ ਜਾਣੋ ਕਿ ਤੁਹਾਡਾ ਆਰਡਰ ਅਤੇ ਪੇਮੈਂਟ ਕਿੱਥੇ ਹੈ।"},
+  f4_h:{en:"Track Reward Points",hi:"रिवॉर्ड पॉइंट्स ट्रैक करें",ta:"ரிவார்ட் பாயிண்ட்களை கண்காணிக்கவும்",ml:"റിവാർഡ് പോയിന്റുകൾ ട്രാക്ക് ചെയ്യുക",pa:"ਰਿਵਾਰਡ ਪੁਆਇੰਟ ਟਰੈਕ ਕਰੋ"},
+  f4_p:{en:"Watch your eligible reward points and balance grow in real time.",hi:"अपने योग्य रिवॉर्ड पॉइंट्स और बैलेंस को रियल टाइम में बढ़ता देखें।",ta:"உங்கள் தகுதியான ரிவார்ட் பாயிண்ட்கள் மற்றும் இருப்பு நிகழ்நேரத்தில் வளர்வதைப் பாருங்கள்.",ml:"നിങ്ങളുടെ യോഗ്യമായ റിവാർഡ് പോയിന്റുകളും ബാലൻസും തത്സമയം വളരുന്നത് കാണുക.",pa:"ਆਪਣੇ ਯੋਗ ਰਿਵਾਰਡ ਪੁਆਇੰਟ ਅਤੇ ਬੈਲੰਸ ਨੂੰ ਰੀਅਲ ਟਾਈਮ ਵਿੱਚ ਵਧਦੇ ਵੇਖੋ।"},
+  f5_h:{en:"Know Your Tier",hi:"अपना टियर जानें",ta:"உங்கள் டையரை அறியுங்கள்",ml:"നിങ്ങളുടെ ടയർ അറിയുക",pa:"ਆਪਣਾ ਟੀਅਰ ਜਾਣੋ"},
+  f5_p:{en:"See your reward tier and the next milestone that can unlock additional benefits.",hi:"अपना रिवॉर्ड टियर और अगला माइलस्टोन देखें जो अतिरिक्त लाभ अनलॉक कर सकता है।",ta:"உங்கள் ரிவார்ட் டையர் மற்றும் கூடுதல் நன்மைகளைத் திறக்கக்கூடிய அடுத்த மைல்கல்லைப் பாருங்கள்.",ml:"നിങ്ങളുടെ റിവാർഡ് ടയറും അധിക ആനുകൂല്യങ്ങൾ അൺലോക്ക് ചെയ്യാവുന്ന അടുത്ത നാഴികക്കല്ലും കാണുക.",pa:"ਆਪਣਾ ਰਿਵਾਰਡ ਟੀਅਰ ਅਤੇ ਅਗਲਾ ਮੀਲ ਪੱਥਰ ਵੇਖੋ ਜੋ ਵਾਧੂ ਲਾਭ ਅਨਲੌਕ ਕਰ ਸਕਦਾ ਹੈ।"},
+  f6_h:{en:"Redeem In-App",hi:"ऐप में ही रिडीम करें",ta:"ஆப்பிலேயே ரிடீம் செய்யுங்கள்",ml:"ആപ്പിനുള്ളിൽ റിഡീം ചെയ്യുക",pa:"ਐਪ ਵਿੱਚ ਹੀ ਰਿਡੀਮ ਕਰੋ"},
+  f6_p:{en:"Choose gifts or a direct bank transfer and redeem directly from your phone.",hi:"गिफ्ट या सीधा बैंक ट्रांसफर चुनें और अपने फोन से ही रिडीम करें।",ta:"பரிசுகள் அல்லது நேரடி வங்கி பரிமாற்றத்தைத் தேர்ந்தெடுத்து உங்கள் தொலைபேசியில் இருந்தே ரிடீம் செய்யுங்கள்.",ml:"സമ്മാനങ്ങളോ നേരിട്ടുള്ള ബാങ്ക് ട്രാൻസ്ഫറോ തിരഞ്ഞെടുത്ത് നിങ്ങളുടെ ഫോണിൽ നിന്ന് നേരിട്ട് റിഡീം ചെയ്യുക.",pa:"ਗਿਫਟ ਜਾਂ ਸਿੱਧਾ ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ ਚੁਣੋ ਅਤੇ ਆਪਣੇ ਫੋਨ ਤੋਂ ਸਿੱਧਾ ਰਿਡੀਮ ਕਰੋ।"},
 
-  how_eyebrow:{en:"How it works",hi:"कैसे काम करता है"},
-  how_h2:{en:"From order book to reward wallet.",hi:"ऑर्डर बुक से रिवॉर्ड वॉलेट तक।"},
-  how_p:{en:"Six simple stages keep the complete partner journey moving.",hi:"छह आसान चरण पूरी पार्टनर यात्रा को आगे बढ़ाते हैं।"},
-  s1_h:{en:"Register",hi:"रजिस्टर करें"},
-  s1_p:{en:"Sign up with your business details.",hi:"अपने बिज़नेस की जानकारी के साथ साइन अप करें।"},
-  s2_h:{en:"Verify",hi:"वेरिफाई करें"},
-  s2_p:{en:"Download and verify your trade partner account.",hi:"डाउनलोड करें और अपना पार्टनर अकाउंट वेरिफाई करें।"},
-  s3_h:{en:"Order",hi:"ऑर्डर करें"},
-  s3_p:{en:"Place an order directly in the app.",hi:"ऐप में सीधे ऑर्डर करें।"},
-  s4_h:{en:"Invoice",hi:"इनवॉइस"},
-  s4_p:{en:"Upload your eligible purchase invoice.",hi:"अपना योग्य खरीद इनवॉइस अपलोड करें।"},
-  s5_h:{en:"Track",hi:"ट्रैक करें"},
-  s5_p:{en:"Watch points and tier status update.",hi:"पॉइंट्स और टियर स्टेटस अपडेट होते देखें।"},
-  s6_h:{en:"Redeem",hi:"रिडीम करें"},
-  s6_p:{en:"Claim your reward when ready.",hi:"जब तैयार हों, अपना रिवॉर्ड क्लेम करें।"},
+  how_eyebrow:{en:"How it works",hi:"कैसे काम करता है",ta:"இது எப்படி செயல்படுகிறது",ml:"ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു",pa:"ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ"},
+  how_h2:{en:"From order book to reward wallet.",hi:"ऑर्डर बुक से रिवॉर्ड वॉलेट तक।",ta:"ஆர்டர் புத்தகத்திலிருந்து ரிவார்ட் வாலட் வரை.",ml:"ഓർഡർ ബുക്കിൽ നിന്ന് റിവാർഡ് വാലറ്റിലേക്ക്.",pa:"ਆਰਡਰ ਬੁੱਕ ਤੋਂ ਰਿਵਾਰਡ ਵਾਲਿਟ ਤੱਕ।"},
+  how_p:{en:"Six simple stages keep the complete partner journey moving.",hi:"छह आसान चरण पूरी पार्टनर यात्रा को आगे बढ़ाते हैं।",ta:"ஆறு எளிய கட்டங்கள் முழு பார்ட்னர் பயணத்தையும் நகர்த்திக்கொண்டே இருக்கும்.",ml:"ആറ് ലളിതമായ ഘട്ടങ്ങൾ പൂർണ്ണ പാർട്ണർ യാത്ര മുന്നോട്ട് നീക്കുന്നു.",pa:"ਛੇ ਸਧਾਰਨ ਪੜਾਅ ਪੂਰੀ ਪਾਰਟਨਰ ਯਾਤਰਾ ਨੂੰ ਅੱਗੇ ਵਧਾਉਂਦੇ ਰਹਿੰਦੇ ਹਨ।"},
+  s1_h:{en:"Register",hi:"रजिस्टर करें",ta:"பதிவு செய்யுங்கள்",ml:"രജിസ്റ്റർ ചെയ്യുക",pa:"ਰਜਿਸਟਰ ਕਰੋ"},
+  s1_p:{en:"Sign up with your business details.",hi:"अपने बिज़नेस की जानकारी के साथ साइन अप करें।",ta:"உங்கள் வணிக விவரங்களுடன் பதிவு செய்யுங்கள்.",ml:"നിങ്ങളുടെ ബിസിനസ് വിവരങ്ങൾ ഉപയോഗിച്ച് സൈൻ അപ്പ് ചെയ്യുക.",pa:"ਆਪਣੇ ਕਾਰੋਬਾਰ ਦੇ ਵੇਰਵਿਆਂ ਨਾਲ ਸਾਈਨ ਅੱਪ ਕਰੋ।"},
+  s2_h:{en:"Verify",hi:"वेरिफाई करें",ta:"சரிபார்க்கவும்",ml:"സ്ഥിരീകരിക്കുക",pa:"ਪੁਸ਼ਟੀ ਕਰੋ"},
+  s2_p:{en:"Download and verify your trade partner account.",hi:"डाउनलोड करें और अपना पार्टनर अकाउंट वेरिफाई करें।",ta:"பதிவிறக்கம் செய்து உங்கள் வர்த்தக பார்ட்னர் கணக்கை சரிபார்க்கவும்.",ml:"ഡൗൺലോഡ് ചെയ്ത് നിങ്ങളുടെ ട്രേഡ് പാർട്ണർ അക്കൗണ്ട് സ്ഥിരീകരിക്കുക.",pa:"ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਆਪਣੇ ਟਰੇਡ ਪਾਰਟਨਰ ਖਾਤੇ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।"},
+  s3_h:{en:"Order",hi:"ऑर्डर करें",ta:"ஆர்டர்",ml:"ഓർഡർ",pa:"ਆਰਡਰ"},
+  s3_p:{en:"Place an order directly in the app.",hi:"ऐप में सीधे ऑर्डर करें।",ta:"ஆப்பில் நேரடியாக ஆர்டர் செய்யவும்.",ml:"ആപ്പിൽ നേരിട്ട് ഓർഡർ ചെയ്യുക.",pa:"ਐਪ ਵਿੱਚ ਸਿੱਧਾ ਆਰਡਰ ਦਿਓ।"},
+  s4_h:{en:"Invoice",hi:"इनवॉइस",ta:"இன்வாய்ஸ்",ml:"ഇൻവോയ്സ്",pa:"ਇਨਵੌਇਸ"},
+  s4_p:{en:"Upload your eligible purchase invoice.",hi:"अपना योग्य खरीद इनवॉइस अपलोड करें।",ta:"உங்கள் தகுதியான கொள்முதல் இன்வாய்ஸை பதிவேற்றவும்.",ml:"നിങ്ങളുടെ യോഗ്യമായ വാങ്ങൽ ഇൻവോയ്സ് അപ്‌ലോഡ് ചെയ്യുക.",pa:"ਆਪਣਾ ਯੋਗ ਖਰੀਦ ਇਨਵੌਇਸ ਅੱਪਲੋਡ ਕਰੋ।"},
+  s5_h:{en:"Track",hi:"ट्रैक करें",ta:"கண்காணிக்கவும்",ml:"ട്രാക്ക് ചെയ്യുക",pa:"ਟਰੈਕ ਕਰੋ"},
+  s5_p:{en:"Watch points and tier status update.",hi:"पॉइंट्स और टियर स्टेटस अपडेट होते देखें।",ta:"பாயிண்ட்கள் மற்றும் டையர் நிலை புதுப்பிக்கப்படுவதைப் பாருங்கள்.",ml:"പോയിന്റുകളും ടയർ സ്റ്റാറ്റസും അപ്‌ഡേറ്റ് ആകുന്നത് കാണുക.",pa:"ਪੁਆਇੰਟ ਅਤੇ ਟੀਅਰ ਸਟੇਟਸ ਅੱਪਡੇਟ ਹੁੰਦੇ ਵੇਖੋ।"},
+  s6_h:{en:"Redeem",hi:"रिडीम करें",ta:"ரிடீம் செய்யுங்கள்",ml:"റിഡീം ചെയ്യുക",pa:"ਰਿਡੀਮ ਕਰੋ"},
+  s6_p:{en:"Claim your reward when ready.",hi:"जब तैयार हों, अपना रिवॉर्ड क्लेम करें।",ta:"தயாராகும்போது உங்கள் ரிவார்டை கோருங்கள்.",ml:"തയ്യാറാകുമ്പോൾ നിങ്ങളുടെ റിവാർഡ് ക്ലെയിം ചെയ്യുക.",pa:"ਜਦੋਂ ਤਿਆਰ ਹੋਵੋ ਆਪਣਾ ਰਿਵਾਰਡ ਕਲੇਮ ਕਰੋ।"},
 
-  rew_eyebrow:{en:"The SwiftPlus scheme",hi:"SwiftPlus स्कीम"},
-  rew_p:{en:"The more you order, the more you earn. SwiftPlus makes the reward journey visible instead of leaving it hidden in calculations and follow-ups.",hi:"जितना ज़्यादा ऑर्डर, उतनी ज़्यादा कमाई। SwiftPlus रिवॉर्ड यात्रा को दिखने योग्य बनाता है, गणनाओं और फॉलो-अप में छुपाए रखने के बजाय।"},
-  r1_b:{en:"Assured gifts",hi:"पक्का गिफ्ट"},
-  r1_s:{en:"At every eligible milestone",hi:"हर योग्य माइलस्टोन पर"},
-  r2_b:{en:"Lucky draws",hi:"लकी ड्रॉ"},
-  r2_s:{en:"Quarterly and annual",hi:"त्रैमासिक और वार्षिक"},
-  r3_b:{en:"Flexible redemption",hi:"लचीला रिडेम्पशन"},
-  r3_s:{en:"Gift or bank transfer",hi:"गिफ्ट या बैंक ट्रांसफर"},
-  r4_b:{en:"Transparent rewards",hi:"पारदर्शी रिवॉर्ड्स"},
-  r4_s:{en:"No hidden calculations",hi:"कोई छुपी गणना नहीं"},
-  points_available:{en:"points available",hi:"पॉइंट्स उपलब्ध"},
+  rew_eyebrow:{en:"The SwiftPlus scheme",hi:"SwiftPlus स्कीम",ta:"SwiftPlus ஸ்கீம்",ml:"SwiftPlus സ്കീം",pa:"SwiftPlus ਸਕੀਮ"},
+  rew_p:{en:"The more you order, the more you earn. SwiftPlus makes the reward journey visible instead of leaving it hidden in calculations and follow-ups.",hi:"जितना ज़्यादा ऑर्डर, उतनी ज़्यादा कमाई। SwiftPlus रिवॉर्ड यात्रा को दिखने योग्य बनाता है, गणनाओं और फॉलो-अप में छुपाए रखने के बजाय।",ta:"நீங்கள் அதிகமாக ஆர்டர் செய்யும்போது, அதிகமாக சம்பாதிக்கிறீர்கள். கணக்கீடுகள் மற்றும் பின்தொடர்தல்களில் மறைத்து வைப்பதற்குப் பதிலாக SwiftPlus ரிவார்ட் பயணத்தை காணக்கூடியதாக ஆக்குகிறது.",ml:"നിങ്ങൾ കൂടുതൽ ഓർഡർ ചെയ്യുന്തോറും കൂടുതൽ സമ്പാദിക്കും. കണക്കുകൂട്ടലുകളിലും ഫോളോ-അപ്പുകളിലും മറച്ചുവെക്കുന്നതിന് പകരം SwiftPlus റിവാർഡ് യാത്ര ദൃശ്യമാക്കുന്നു.",pa:"ਜਿੰਨਾ ਜ਼ਿਆਦਾ ਤੁਸੀਂ ਆਰਡਰ ਕਰਦੇ ਹੋ, ਓਨਾ ਹੀ ਜ਼ਿਆਦਾ ਕਮਾਉਂਦੇ ਹੋ। ਗਣਨਾਵਾਂ ਅਤੇ ਫਾਲੋ-ਅੱਪ ਵਿੱਚ ਲੁਕਾਉਣ ਦੀ ਬਜਾਏ SwiftPlus ਰਿਵਾਰਡ ਯਾਤਰਾ ਨੂੰ ਦਿਖਣਯੋਗ ਬਣਾਉਂਦਾ ਹੈ।"},
+  r1_b:{en:"Assured gifts",hi:"पक्का गिफ्ट",ta:"உறுதியான பரிசுகள்",ml:"ഉറപ്പുള്ള സമ്മാനങ്ങൾ",pa:"ਪੱਕੇ ਗਿਫਟ"},
+  r1_s:{en:"At every eligible milestone",hi:"हर योग्य माइलस्टोन पर",ta:"ஒவ்வொரு தகுதியான மைல்கல்லிலும்",ml:"ഓരോ യോഗ്യമായ നാഴികക്കല്ലിലും",pa:"ਹਰ ਯੋਗ ਮੀਲ ਪੱਥਰ 'ਤੇ"},
+  r2_b:{en:"Lucky draws",hi:"लकी ड्रॉ",ta:"லக்கி டிரா",ml:"ലക്കി ഡ്രോ",pa:"ਲੱਕੀ ਡਰਾਅ"},
+  r2_s:{en:"Quarterly and annual",hi:"त्रैमासिक और वार्षिक",ta:"காலாண்டு மற்றும் வருடாந்திர",ml:"ത്രൈമാസികവും വാർഷികവും",pa:"ਤਿਮਾਹੀ ਅਤੇ ਸਾਲਾਨਾ"},
+  r3_b:{en:"Flexible redemption",hi:"लचीला रिडेम्पशन",ta:"நெகிழ்வான ரிடம்ப்ஷன்",ml:"ഫ്ലെക്സിബിൾ റിഡംപ്ഷൻ",pa:"ਲਚਕੀਲਾ ਰਿਡੈਂਪਸ਼ਨ"},
+  r3_s:{en:"Gift or bank transfer",hi:"गिफ्ट या बैंक ट्रांसफर",ta:"பரிசு அல்லது வங்கி பரிமாற்றம்",ml:"സമ്മാനം അല്ലെങ്കിൽ ബാങ്ക് ട്രാൻസ്ഫർ",pa:"ਗਿਫਟ ਜਾਂ ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ"},
+  r4_b:{en:"Transparent rewards",hi:"पारदर्शी रिवॉर्ड्स",ta:"வெளிப்படையான ரிவார்டுகள்",ml:"സുതാര്യമായ റിവാർഡുകൾ",pa:"ਪਾਰਦਰਸ਼ੀ ਰਿਵਾਰਡ"},
+  r4_s:{en:"No hidden calculations",hi:"कोई छुपी गणना नहीं",ta:"மறைக்கப்பட்ட கணக்கீடுகள் இல்லை",ml:"മറഞ്ഞ കണക്കുകൂട്ടലുകൾ ഇല്ല",pa:"ਕੋਈ ਲੁਕਵੀਂ ਗਣਨਾ ਨਹੀਂ"},
+  points_available:{en:"points available",hi:"पॉइंट्स उपलब्ध",ta:"பாயிண்ட்கள் கிடைக்கின்றன",ml:"പോയിന്റുകൾ ലഭ്യമാണ്",pa:"ਪੁਆਇੰਟ ਉਪਲਬਧ"},
 
-  since_short:{en:"SINCE",hi:"स्थापना"},
-  tr_eyebrow:{en:"Why trust Ind-Swift",hi:"Ind-Swift पर भरोसा क्यों"},
-  tr_h2:{en:"Four decades of pharma trust. Now in your pocket.",hi:"चार दशकों का फार्मा भरोसा। अब आपकी जेब में।"},
-  tr_p:{en:"SwiftPlus brings the Ind-Swift trade partner experience into a modern digital channel, with the same focus on dependable pharma relationships.",hi:"SwiftPlus, Ind-Swift के ट्रेड पार्टनर अनुभव को एक आधुनिक डिजिटल चैनल में लाता है, भरोसेमंद फार्मा रिश्तों पर उसी फोकस के साथ।"},
-  tr_s1:{en:"Since",hi:"स्थापना"},
-  tr_s2:{en:"Countries",hi:"देश"},
-  tr_s3:{en:"North India pharma mfr.",hi:"उत्तर भारत में फार्मा निर्माता"},
-  tl1:{en:"Business data remains private",hi:"बिज़नेस डेटा पूरी तरह निजी रहता है"},
-  tl2:{en:"Data encrypted in transit",hi:"डेटा हमेशा एन्क्रिप्टेड रहता है"},
-  tl3:{en:"Built for registered Ind-Swift trade partners",hi:"रजिस्टर्ड Ind-Swift ट्रेड पार्टनर्स के लिए बनाया गया"},
+  since_short:{en:"SINCE",hi:"स्थापना",ta:"முதல்",ml:"മുതൽ",pa:"ਸਥਾਪਨਾ"},
+  tr_eyebrow:{en:"Why trust Ind-Swift",hi:"Ind-Swift पर भरोसा क्यों",ta:"ஏன் Ind-Swift ஐ நம்ப வேண்டும்",ml:"എന്തുകൊണ്ട് Ind-Swift-നെ വിശ്വസിക്കണം",pa:"Ind-Swift 'ਤੇ ਭਰੋਸਾ ਕਿਉਂ"},
+  tr_h2:{en:"Four decades of pharma trust. Now in your pocket.",hi:"चार दशकों का फार्मा भरोसा। अब आपकी जेब में।",ta:"நான்கு தசாப்தங்களின் மருந்து நம்பிக்கை. இப்போது உங்கள் பாக்கெட்டில்.",ml:"നാല് പതിറ്റാണ്ടിന്റെ ഫാർമ വിശ്വാസം. ഇപ്പോൾ നിങ്ങളുടെ പോക്കറ്റിൽ.",pa:"ਚਾਰ ਦਹਾਕਿਆਂ ਦਾ ਫਾਰਮਾ ਭਰੋਸਾ। ਹੁਣ ਤੁਹਾਡੀ ਜੇਬ ਵਿੱਚ।"},
+  tr_p:{en:"SwiftPlus brings the Ind-Swift trade partner experience into a modern digital channel, with the same focus on dependable pharma relationships.",hi:"SwiftPlus, Ind-Swift के ट्रेड पार्टनर अनुभव को एक आधुनिक डिजिटल चैनल में लाता है, भरोसेमंद फार्मा रिश्तों पर उसी फोकस के साथ।",ta:"Ind-Swift வர்த்தக பார்ட்னர் அனுபவத்தை நவீன டிஜிட்டல் சேனலுக்கு SwiftPlus கொண்டு வருகிறது, நம்பகமான மருந்து உறவுகள் மீதான அதே கவனத்துடன்.",ml:"വിശ്വസനീയമായ ഫാർമ ബന്ധങ്ങളിൽ അതേ ശ്രദ്ധയോടെ, Ind-Swift ട്രേഡ് പാർട്ണർ അനുഭവത്തെ ഒരു ആധുനിക ഡിജിറ്റൽ ചാനലിലേക്ക് SwiftPlus കൊണ്ടുവരുന്നു.",pa:"SwiftPlus, Ind-Swift ਦੇ ਟਰੇਡ ਪਾਰਟਨਰ ਅਨੁਭਵ ਨੂੰ ਇੱਕ ਆਧੁਨਿਕ ਡਿਜੀਟਲ ਚੈਨਲ ਵਿੱਚ ਲਿਆਉਂਦਾ ਹੈ, ਭਰੋਸੇਯੋਗ ਫਾਰਮਾ ਰਿਸ਼ਤਿਆਂ 'ਤੇ ਉਸੇ ਧਿਆਨ ਨਾਲ।"},
+  tr_s1:{en:"Since",hi:"स्थापना",ta:"முதல்",ml:"മുതൽ",pa:"ਸਥਾਪਨਾ"},
+  tr_s2:{en:"Countries",hi:"देश",ta:"நாடுகள்",ml:"രാജ്യങ്ങൾ",pa:"ਦੇਸ਼"},
+  tr_s3:{en:"North India pharma mfr.",hi:"उत्तर भारत में फार्मा निर्माता",ta:"வட இந்திய மருந்து உற்பத்தியாளர்",ml:"നോർത്ത് ഇന്ത്യ ഫാർമ നിർമ്മാതാവ്",pa:"ਉੱਤਰੀ ਭਾਰਤ ਫਾਰਮਾ ਨਿਰਮਾਤਾ"},
+  tl1:{en:"Business data remains private",hi:"बिज़नेस डेटा पूरी तरह निजी रहता है",ta:"வணிக தரவு தனிப்பட்டதாகவே இருக்கும்",ml:"ബിസിനസ് ഡാറ്റ സ്വകാര്യമായി തുടരും",pa:"ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਨਿੱਜੀ ਰਹਿੰਦਾ ਹੈ"},
+  tl2:{en:"Data encrypted in transit",hi:"डेटा हमेशा एन्क्रिप्टेड रहता है",ta:"தரவு பரிமாற்றத்தில் என்க்ரிப்ட் செய்யப்பட்டுள்ளது",ml:"ഡാറ്റ ട്രാൻസിറ്റിൽ എൻക്രിപ്റ്റ് ചെയ്തിരിക്കുന്നു",pa:"ਡਾਟਾ ਟ੍ਰਾਂਜ਼ਿਟ ਵਿੱਚ ਐਨਕ੍ਰਿਪਟਡ ਹੈ"},
+  tl3:{en:"Built for registered Ind-Swift trade partners",hi:"रजिस्टर्ड Ind-Swift ट्रेड पार्टनर्स के लिए बनाया गया",ta:"பதிவு செய்யப்பட்ட Ind-Swift வர்த்தக பார்ட்னர்களுக்காக உருவாக்கப்பட்டது",ml:"രജിസ്റ്റർ ചെയ്ത Ind-Swift ട്രേഡ് പാർട്ണർമാർക്കായി നിർമ്മിച്ചത്",pa:"ਰਜਿਸਟਰਡ Ind-Swift ਟਰੇਡ ਪਾਰਟਨਰਾਂ ਲਈ ਬਣਾਇਆ ਗਿਆ"},
 
-  cta_eyebrow:{en:"Get started today",hi:"आज ही शुरू करें"},
-  cta_h2:{en:"Your next order can be your easiest yet.",hi:"आपका अगला ऑर्डर अब तक का सबसे आसान हो सकता है।"},
-  cta_p:{en:"Order smarter, track every reward and stay directly connected with Ind-Swift through SwiftPlus.",hi:"स्मार्ट तरीके से ऑर्डर करें, हर रिवॉर्ड ट्रैक करें और SwiftPlus के ज़रिए सीधे Ind-Swift से जुड़े रहें।"},
-  btn_play2:{en:"Download on Google Play",hi:"Google Play से डाउनलोड करें"},
-  btn_appstore:{en:"Download on App Store",hi:"App Store से डाउनलोड करें"},
-  btn_call:{en:"Call +91 90566 29609",hi:"कॉल करें +91 90566 29609"},
+  cta_eyebrow:{en:"Get started today",hi:"आज ही शुरू करें",ta:"இன்றே தொடங்குங்கள்",ml:"ഇന്ന് തന്നെ ആരംഭിക്കുക",pa:"ਅੱਜ ਹੀ ਸ਼ੁਰੂ ਕਰੋ"},
+  cta_h2:{en:"Your next order can be your easiest yet.",hi:"आपका अगला ऑर्डर अब तक का सबसे आसान हो सकता है।",ta:"உங்கள் அடுத்த ஆர்டர் இதுவரை உள்ளதிலேயே எளிதானதாக இருக்கலாம்.",ml:"നിങ്ങളുടെ അടുത്ത ഓർഡർ ഇതുവരെയുള്ളതിൽ ഏറ്റവും എളുപ്പമുള്ളതാകാം.",pa:"ਤੁਹਾਡਾ ਅਗਲਾ ਆਰਡਰ ਹੁਣ ਤੱਕ ਦਾ ਸਭ ਤੋਂ ਆਸਾਨ ਹੋ ਸਕਦਾ ਹੈ।"},
+  cta_p:{en:"Order smarter, track every reward and stay directly connected with Ind-Swift through SwiftPlus.",hi:"स्मार्ट तरीके से ऑर्डर करें, हर रिवॉर्ड ट्रैक करें और SwiftPlus के ज़रिए सीधे Ind-Swift से जुड़े रहें।",ta:"ஸ்மார்ட்டாக ஆர்டர் செய்யுங்கள், ஒவ்வொரு ரிவார்டையும் கண்காணியுங்கள் மற்றும் SwiftPlus மூலம் Ind-Swift உடன் நேரடியாக இணைந்திருங்கள்.",ml:"സ്മാർട്ടായി ഓർഡർ ചെയ്യുക, ഓരോ റിവാർഡും ട്രാക്ക് ചെയ്യുക, SwiftPlus വഴി Ind-Swift-മായി നേരിട്ട് ബന്ധപ്പെട്ടിരിക്കുക.",pa:"ਸਮਾਰਟ ਤਰੀਕੇ ਨਾਲ ਆਰਡਰ ਕਰੋ, ਹਰ ਰਿਵਾਰਡ ਟਰੈਕ ਕਰੋ ਅਤੇ SwiftPlus ਰਾਹੀਂ ਸਿੱਧੇ Ind-Swift ਨਾਲ ਜੁੜੇ ਰਹੋ।"},
+  btn_play2:{en:"Download on Google Play",hi:"Google Play से डाउनलोड करें",ta:"Google Play இல் பதிவிறக்கவும்",ml:"Google Play-ൽ ഡൗൺലോഡ് ചെയ്യുക",pa:"Google Play 'ਤੇ ਡਾਊਨਲੋਡ ਕਰੋ"},
+  btn_appstore:{en:"Download on App Store",hi:"App Store से डाउनलोड करें",ta:"App Store இல் பதிவிறக்கவும்",ml:"App Store-ൽ ഡൗൺലോഡ് ചെയ്യുക",pa:"App Store 'ਤੇ ਡਾਊਨਲੋਡ ਕਰੋ"},
+  btn_call:{en:"Call +91 90566 29609",hi:"कॉल करें +91 90566 29609",ta:"அழைக்கவும் +91 90566 29609",ml:"വിളിക്കുക +91 90566 29609",pa:"ਕਾਲ ਕਰੋ +91 90566 29609"},
 
-  foot_desc:{en:"The official ordering and rewards app for Ind-Swift Laboratories Ltd.'s registered trade partner network.",hi:"Ind-Swift Laboratories Ltd. के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए आधिकारिक ऑर्डरिंग व रिवॉर्ड्स ऐप।"},
-  foot_explore:{en:"Explore",hi:"एक्सप्लोर करें"},
-  foot_contact:{en:"Contact",hi:"संपर्क"},
-  foot_copy:{en:'© <span id="year"></span> Ind-Swift Laboratories Ltd. All rights reserved.',hi:'© <span id="year"></span> Ind-Swift Laboratories Ltd. सर्वाधिकार सुरक्षित।'},
-  foot_note:{en:"SwiftPlus is intended for registered trade partners only.",hi:"SwiftPlus केवल रजिस्टर्ड ट्रेड पार्टनर्स के लिए है।"}
+  foot_desc:{en:"The official ordering and rewards app for Ind-Swift Laboratories Ltd.'s registered trade partner network.",hi:"Ind-Swift Laboratories Ltd. के रजिस्टर्ड ट्रेड पार्टनर नेटवर्क के लिए आधिकारिक ऑर्डरिंग व रिवॉर्ड्स ऐप।",ta:"Ind-Swift Laboratories Ltd. இன் பதிவு செய்யப்பட்ட வர்த்தக பார்ட்னர் நெட்வொர்க்கிற்கான அதிகாரப்பூர்வ ஆர்டரிங் மற்றும் ரிவார்ட் ஆப்.",ml:"Ind-Swift Laboratories Ltd.-ന്റെ രജിസ്റ്റർ ചെയ്ത ട്രേഡ് പാർട്ണർ നെറ്റ്‌വർക്കിനുള്ള ഔദ്യോഗിക ഓർഡറിംഗ്, റിവാർഡ് ആപ്പ്.",pa:"Ind-Swift Laboratories Ltd. ਦੇ ਰਜਿਸਟਰਡ ਟਰੇਡ ਪਾਰਟਨਰ ਨੈੱਟਵਰਕ ਲਈ ਅਧਿਕਾਰਤ ਆਰਡਰਿੰਗ ਅਤੇ ਰਿਵਾਰਡ ਐਪ।"},
+  foot_explore:{en:"Explore",hi:"एक्सप्लोर करें",ta:"ஆராயுங்கள்",ml:"പര്യവേക്ഷണം ചെയ്യുക",pa:"ਐਕਸਪਲੋਰ ਕਰੋ"},
+  foot_contact:{en:"Contact",hi:"संपर्क",ta:"தொடர்பு",ml:"ബന്ധപ്പെടുക",pa:"ਸੰਪਰਕ"},
+  foot_copy:{en:'© <span id="year"></span> Ind-Swift Laboratories Ltd. All rights reserved.',hi:'© <span id="year"></span> Ind-Swift Laboratories Ltd. सर्वाधिकार सुरक्षित।',ta:'© <span id="year"></span> Ind-Swift Laboratories Ltd. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',ml:'© <span id="year"></span> Ind-Swift Laboratories Ltd. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.',pa:'© <span id="year"></span> Ind-Swift Laboratories Ltd. ਸਾਰੇ ਅਧਿਕਾਰ ਸੁਰੱਖਿਅਤ ਹਨ।'},
+  foot_note:{en:"SwiftPlus is intended for registered trade partners only.",hi:"SwiftPlus केवल रजिस्टर्ड ट्रेड पार्टनर्स के लिए है।",ta:"SwiftPlus பதிவு செய்யப்பட்ட வர்த்தக பார்ட்னர்களுக்கு மட்டுமே.",ml:"SwiftPlus രജിസ്റ്റർ ചെയ്ത ട്രേഡ് പാർട്ണർമാർക്ക് മാത്രമുള്ളതാണ്.",pa:"SwiftPlus ਸਿਰਫ਼ ਰਜਿਸਟਰਡ ਟਰੇਡ ਪਾਰਟਨਰਾਂ ਲਈ ਹੈ।"}
 };
+
+const langNames = {en:"EN",hi:"हिं",ta:"த",ml:"മ",pa:"ਪੰ"};
 
 function setLang(lang){
   document.documentElement.lang = lang;
@@ -967,14 +1013,37 @@ function setLang(lang){
     const entry = translations[key];
     if(entry && entry[lang] !== undefined){ el.innerHTML = entry[lang]; }
   });
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  document.querySelectorAll('.lang-opt').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  const label = document.getElementById('langCurrentLabel');
+  if(label) label.textContent = langNames[lang] || lang.toUpperCase();
   const y = document.getElementById('year');
   if(y) y.textContent = new Date().getFullYear();
   try{ localStorage.setItem('swiftplus_lang', lang); }catch(e){}
 }
-document.querySelectorAll('.lang-btn').forEach(b=>{
-  b.addEventListener('click', ()=> setLang(b.dataset.lang));
-});
+
+const langDropdown = document.getElementById('langDropdown');
+const langCurrentBtn = document.getElementById('langCurrentBtn');
+if(langDropdown && langCurrentBtn){
+  langCurrentBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    langDropdown.classList.toggle('open');
+    langCurrentBtn.setAttribute('aria-expanded', langDropdown.classList.contains('open'));
+  });
+  document.querySelectorAll('.lang-opt').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      setLang(b.dataset.lang);
+      langDropdown.classList.remove('open');
+      langCurrentBtn.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('click', (e)=>{
+    if(!langDropdown.contains(e.target)){
+      langDropdown.classList.remove('open');
+      langCurrentBtn.setAttribute('aria-expanded','false');
+    }
+  });
+}
+
 let savedLang = 'en';
 try{ savedLang = localStorage.getItem('swiftplus_lang') || 'en'; }catch(e){}
 setLang(savedLang);
