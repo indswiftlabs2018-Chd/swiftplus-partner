@@ -491,39 +491,50 @@ footer a:hover{color:#fff}
 
 /* FLOATING DOWNLOAD DOCK */
 .float-dock{
-  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  position:fixed;left:20px;top:50%;transform:translateY(-50%);
   display:flex;flex-direction:column;gap:16px;z-index:150;
 }
 .float-btn{
-  position:relative;width:54px;height:54px;border-radius:50%;
-  background:#fff;box-shadow:0 10px 26px rgba(6,43,87,.2);border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;color:var(--navy);
+  display:block;width:158px;
   animation:dockBob 3.2s ease-in-out infinite;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,background .3s ease,color .3s ease;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),filter .3s ease;
+  filter:drop-shadow(0 10px 24px rgba(6,43,87,.28));
 }
+.float-btn img{width:100%;height:auto;display:block;border-radius:9px}
 .float-btn:nth-child(2){animation-delay:.4s}
-.float-btn svg{width:24px;height:24px}
 @keyframes dockBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .float-btn:hover{
   animation-play-state:paused;
-  transform:translateY(-8px) scale(1.07);
-  box-shadow:0 20px 38px rgba(6,43,87,.3);
+  transform:translateY(-8px) scale(1.06);
+  filter:drop-shadow(0 18px 32px rgba(6,43,87,.4));
 }
-.float-btn.play:hover{background:var(--gold);color:#12304E;border-color:transparent}
-.float-btn.apple:hover{background:var(--navy);color:#fff;border-color:transparent}
-.float-tooltip{
-  position:absolute;right:66px;top:50%;transform:translateY(-50%) translateX(8px);
-  background:var(--navy);color:#fff;padding:9px 14px;border-radius:9px;
-  font-family:var(--font-head);font-size:12.5px;font-weight:700;white-space:nowrap;
-  opacity:0;pointer-events:none;box-shadow:0 12px 24px rgba(0,0,0,.22);
-  transition:opacity .25s ease,transform .25s ease;
+@media(max-width:900px){
+  .float-dock{left:12px;gap:12px}
+  .float-btn{width:118px}
 }
-.float-tooltip:after{
-  content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%);
-  border-width:5px 0 5px 5px;border-style:solid;border-color:transparent transparent transparent var(--navy);
+@media(max-width:460px){
+  .float-dock{left:8px;gap:9px}
+  .float-btn{width:90px}
 }
-.float-btn:hover .float-tooltip{opacity:1;transform:translateY(-50%) translateX(0)}
-@media(max-width:900px){.float-dock{display:none}}
+
+/* BACK TO TOP */
+.back-to-top{
+  position:fixed;right:20px;bottom:24px;z-index:150;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 28px rgba(6,43,87,.35);
+  border:none;cursor:pointer;
+  opacity:0;transform:translateY(16px) scale(.85);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .3s ease;
+}
+.back-to-top.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.back-to-top:hover{background:var(--blue);transform:translateY(-4px) scale(1.05)}
+.back-to-top svg{width:22px;height:22px}
+@media(max-width:460px){
+  .back-to-top{width:44px;height:44px;right:14px;bottom:16px}
+  .back-to-top svg{width:18px;height:18px}
+}
 </style>
 </head>
 
@@ -565,15 +576,17 @@ footer a:hover{color:#fff}
 </header>
 
 <div class="float-dock" aria-label="Download SwiftPlus">
-  <a class="float-btn play" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener" aria-label="Google Play">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3.5v17a1 1 0 0 0 1.6.8l11-8.5a1 1 0 0 0 0-1.6L4.6 2.7A1 1 0 0 0 3 3.5z"/></svg>
-    <span class="float-tooltip" data-i18n="dock_play">Get it on Google Play</span>
+  <a class="float-btn" href="https://play.google.com/store/apps/details?id=com.indswiftplus.partner" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+    <img src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/media/images/Google_Play_badge.png?itok=23B2SdPW" alt="Get it on Google Play">
   </a>
-  <a class="float-btn apple" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener" aria-label="App Store">
-    <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.6 59 129.3 107.2 127.8 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84.1 102.6-121.8-65.2-30.7-65.7-90-65.7-91.99zM256.4 88.9c26.6-31.6 24.2-60.4 23.4-70.9-23.6 1.4-50.9 16.4-66.5 34.8-17.2 19.5-27.3 43.6-25.2 70.4 25.7 2 49.1-10.9 68.3-34.3z"/></svg>
-    <span class="float-tooltip" data-i18n="dock_apple">Download on App Store</span>
+  <a class="float-btn" href="https://apps.apple.com/us/app/indswift-plus/id6778782021" target="_blank" rel="noopener" aria-label="Download on the App Store">
+    <img src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/media/images/Download_on_the_App_Store_badge.png?itok=RfFrhJp3" alt="Download on the App Store">
   </a>
 </div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <main id="top">
 <section class="hero">
@@ -945,6 +958,18 @@ footer a:hover{color:#fff}
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* back to top */
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 480){ btn.classList.add('show'); } else { btn.classList.remove('show'); }
+  }, {passive:true});
+  btn.addEventListener('click', ()=>{
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
 
 /* reveal on scroll */
 const revealEls = document.querySelectorAll('.reveal');
